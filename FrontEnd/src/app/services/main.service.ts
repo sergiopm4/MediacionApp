@@ -1,0 +1,25 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { User } from '../models/User';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MainService {
+
+  constructor(public _http: HttpClient) { }
+
+  // register(user: User) {
+  //   this._http.post('http://localhost:3000/register', user)
+  // }
+
+  register(user: User) {
+    return this._http.post('http://localhost:3000/register', user)
+  }
+
+
+
+
+}
