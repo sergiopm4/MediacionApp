@@ -1,0 +1,113 @@
+<div class="container">
+    <header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+
+
+            <!-- Country selection -->
+            <div class="col-2 pt-1">
+                <p id="selectCountry" class="lead">Selecciona categoría</p>
+                <select name="miselect" class="form-control">
+                    <option id="optionsSelect" value="">Familiar</option>
+                    <option id="optionsSelect" value="">Mercantil</option>
+                </select>
+            </div>
+
+            <div class="col-1"></div>
+
+
+            <!-- Lupa que abre modal y login -->
+            <div class="col-6 text-center">
+                <h1 id="head-title">
+                    <a class="blog-header-logo text-dark" href="#">Casos Mediación</a>
+                </h1>
+            </div>
+            <div class="col-3 d-flex justify-content-end align-items-center">
+                <a class="text-muted" href="#" data-toggle="modal" data-target="#exampleModal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="mx-3">
+                        <circle cx="10.5" cy="10.5" r="7.5"></circle>
+                        <line x1="21" y1="21" x2="15.8" y2="15.8"></line>
+                    </svg>
+                </a>
+                <a routerLink="/home" class="btn btn-outline-dark btn-md button" href="#">Cerrar sesión</a>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Search Options</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Categoría</p>
+                            <select name="miselect" class="form-control">
+                                <option value="">Familiar</option>
+                            </select>
+                            <p></p>
+                            <p>...working on it...</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button data-dismiss="modal" type="button" class="btn btn-primary">Save
+                                changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!-- Seleccion de categorias -->
+    <div class="nav-scroller py-1 mb-2 mt-4">
+        <nav id="nav-links" class="nav d-flex justify-content-between">
+            <a class="p-2 text-muted" href="#">Business</a>
+            <a class="p-2 text-muted" href="#">Entertainment</a>
+            <a class="p-2 text-muted" href="#">General</a>
+            <a class="p-2 text-muted" href="#">Health</a>
+            <a class="p-2 text-muted" href="#">Science</a>
+            <a class="p-2 text-muted" href="#">Sports</a>
+            <a class="p-2 text-muted" href="#">Technology</a>
+        </nav>
+    </div>
+
+
+
+    <!-- El input de search por palabra -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" #inputSearch placeholder="Search by term.."
+                        aria-label="Search by term.." aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-warning btn-md button">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+
+
+    <!-- Las cards con las noticias -->
+    <div class="row">
+        <div class="col-md-4 my-3">
+            <div class="card" style="width: 18rem;">
+                <img src="" class="card-img-top" alt="" height="175" width="175">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p></p>
+                    <a href="#" routerLink="/case" class="btn btn-warning button">Ir al caso</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

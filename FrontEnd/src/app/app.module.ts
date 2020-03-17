@@ -12,6 +12,8 @@ import { LoginComponent } from './login/login.component';
 
 import { MainService } from './services/main.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CaseComponent } from './case/case.component';
+import { AllCasesComponent } from './all-cases/all-cases.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HomeComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    CaseComponent,
+    AllCasesComponent
   ],
   imports: [
     BrowserModule,
