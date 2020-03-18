@@ -4,8 +4,11 @@
         <button routerLink="/allcases">TODOS LOS CASOS</button>
 
         <form class="form-inline">
-            <button routerLink="/login" class="btn btn-primary my-2 my-sm-0 font-weight-bold" type="submit">Soy
-                mediador</button>
+            <button *ngIf="!_userService.isLogged" routerLink="/login"
+                class="btn btn-primary my-2 my-sm-0 font-weight-bold" type="submit">Iniciar
+                sesión</button>
+            <button *ngIf="_userService.isLogged" (click)="closeSession()"
+                class="btn btn-outline-secondary my-2 my-sm-0 font-weight-bold" type="submit">Cerrar sesión</button>
         </form>
     </nav>
 </header>

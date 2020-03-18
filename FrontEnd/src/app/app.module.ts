@@ -9,11 +9,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-
-import { MainService } from './services/main.service';
-import { HttpClientModule } from '@angular/common/http';
 import { CaseComponent } from './case/case.component';
 import { AllCasesComponent } from './all-cases/all-cases.component';
+
+import { MainService } from './services/main.service';
+import { UserService } from './services/user.service';
+import { HttpClientModule } from '@angular/common/http';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ProfileComponent } from './profile/profile.component';
+
 
 
 @NgModule({
@@ -23,16 +27,18 @@ import { AllCasesComponent } from './all-cases/all-cases.component';
     RegisterComponent,
     LoginComponent,
     CaseComponent,
-    AllCasesComponent
+    AllCasesComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SweetAlert2Module
   ],
-  providers: [MainService],
+  providers: [MainService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

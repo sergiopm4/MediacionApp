@@ -10,7 +10,9 @@ secrets = JSON.parse(secrets);
 
 //. Register
 exports.register = (req, res) => {
-    if (req.body['firstName'] && req.body['lastName'] && req.body['password'] && req.body['email'] && req.body['age']) {
+    // if (req.body['firstName'] && req.body['lastName'] && req.body['password'] && req.body['email'] && req.body['age']) {
+
+    if (req.body['password'] && req.body['email']) {
 
         User.find((err, users) => {
             let userExist = false;
@@ -35,7 +37,7 @@ exports.register = (req, res) => {
                     });
                     newUser.save((err, result) => {
                         if (err) throw err;
-                        res.send({ "message": "User saved!", "_id": result._id })
+                        res.send({ "Message": "User saved!", "_id": result._id })
                     })
                 })
             }
@@ -63,7 +65,7 @@ exports.login = (req, res) => {
                     jwt.sign({ 'email': users['email'] }, secrets['jwt_clave'], (err, token) => {
                         if (err) throw err;
                         res.cookie('sello', token);
-                        res.send({ 'Message': 'Welcome!', 'token': token })
+                        res.send({ 'Message': 'Welcome', 'token': token })
                     })
                 } else {
 

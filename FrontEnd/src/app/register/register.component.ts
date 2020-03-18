@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MainService } from '../services/main.service';
-import { User } from '../models/User';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -9,10 +10,32 @@ import { User } from '../models/User';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  constructor(public _mainService: MainService, public formBuilder: FormBuilder, public _router: Router) {
 
+    // this.registerForm = this.formBuilder.group({
+    //   firstName: ['', Validators.required],
+    //   lastName: ['', Validators.required],
+    //   email: ['', [Validators.required, Validators.email]],
+    //   password: ['', [Validators.required, Validators.minLength(8)]],
+    //   age: ['', Validators.required]
+    // });
 
+    // this.registerForm = this.formBuilder.group({
+    //   email: ['', [Validators.required, Validators.email]],
+    //   passwords: this.formBuilder.group({
+    //     password: ['', [Validators.required, Validators.minLength(8)]],
+    //     confirmPassword: ['', Validators.required],
+    //   }, { validator: this.matchValidator }),
+    //   acceptTerms: ['', Validators.required]
+    // });
 
-  user: User = new User();
+    this.registerForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', Validators.required],
+      acceptTerms: ['', Validators.required]
+    }, { validator: this.matchValidator('password', 'confirmPassword') });
+  }
 
   registerForm: FormGroup;
   submitted: boolean = false;
@@ -21,9 +44,27 @@ export class RegisterComponent {
   //Abreviado para acceder a cada validacion.
   get f() { return this.registerForm.controls; }
 
+  matchValidator(controlName: string, matchControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchControl = formGroup.controls[matchControlName];
+
+      if (matchControl.errors && !matchControl.errors.mustMatch) {
+        // return if another validator has already found an error on the matchingControl
+        return;
+      }
+
+      // set error on matchingControl if validation fails
+      if (control.value !== matchControl.value) {
+        matchControl.setErrors({ mustMatch: true });
+      } else {
+        matchControl.setErrors(null);
+      }
+    }
+  }
+
   register() {
     this.submitted = true;
-
 
     if (this.registerForm.invalid) {
       return;
@@ -35,20 +76,16 @@ export class RegisterComponent {
         .subscribe((response) => { console.log(response) })
 
 
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Registro correcto!',
+        showConfirmButton: false,
+        timer: 2500
+      })
 
-      alert('Registro correcto!')
+      this._router.navigateByUrl("/profile")
+
     }
-
   }
-  constructor(public _mainService: MainService, public formBuilder: FormBuilder) {
-
-    this.registerForm = this.formBuilder.group({
-      firstName: [this.user.firstName, Validators.required],
-      lastName: [this.user.lastName, Validators.required],
-      email: [this.user.email, [Validators.required, Validators.email]],
-      password: [this.user.password, [Validators.required, Validators.minLength(8)]],
-      age: [this.user.age, Validators.required]
-    });
-  }
-
 }

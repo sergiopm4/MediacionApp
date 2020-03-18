@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { check, validationResult } = require('express-validator');
 const helmet = require('helmet');
+const cors = require('cors');
 
 const dbController = require('./controller/db.controller');
 const authController = require('./controller/auth.controller');
@@ -12,10 +13,13 @@ const server = express();
 //.Middlewares
 server.use(helmet());
 server.use(bodyParser.json());
+server.use(cors());
 server.use(cookieParser()); //.Para poder leer el 'sello'
 
 //.Endpoints --> /register && /login
-server.post('/register', [check('firstName').not().isEmpty().trim().escape(), check('lastName').not().isEmpty().trim().escape(), check('email', 'The email is not valid').not().isEmpty().isEmail().normalizeEmail(), check('password', 'Password must have at least 8 characters').not().isEmpty().isLength({ min: 8 })], (req, res) => {
+// server.post('/register', [check('firstName').not().isEmpty().trim().escape(), check('lastName').not().isEmpty().trim().escape(), check('email', 'The email is not valid').not().isEmpty().isEmail().normalizeEmail(), check('password', 'Password must have at least 8 characters').not().isEmpty().isLength({ min: 8 })], (req, res) => {
+server.post('/register', [check('email', 'The email is not valid').not().isEmpty().isEmail().normalizeEmail(), check('password', 'Password must have at least 8 characters').not().isEmpty().isLength({ min: 8 })], (req, res) => {
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json(errors.array());
