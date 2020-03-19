@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { User } from '../models/User';
+import { Case } from '../models/Case';
 
 
 @Injectable({
@@ -20,10 +21,14 @@ export class MainService {
   }
 
   updateProfile(user: User) {
-    return this._http.put('http://localhost:3000/editOneUser', user)
+    return this._http.put('http://localhost:3000/editOneUser', user);
   }
 
-
-
-
+  postCase(case: Case){
+  return this._http.post('http://localhost:3000/postCase', case);
 }
+}
+
+
+
+

@@ -40,11 +40,11 @@ export class RegisterComponent {
 
       this._mainService.register(this.registerForm.value)
         .subscribe((response) => {
-          if (response['Message'] === 'User saved') {
+          if (response['Message'] === 'USER SAVED') {
             Swal.fire({
               position: 'center',
               icon: 'success',
-              title: 'Registro correcto!',
+              title: 'Registro correcto, completa tu perfil!',
               showConfirmButton: false,
               timer: 2500
             })
@@ -52,7 +52,7 @@ export class RegisterComponent {
             this._router.navigateByUrl("/profile")
           }
 
-          if (response['Error'] === 'This email already exists.') {
+          if (response['Error'] === 'EMAIL_ALREADY_USED') {
             Swal.fire({
               position: 'center',
               icon: 'error',
@@ -69,8 +69,6 @@ export class RegisterComponent {
           }
         })
     }
-
-
   }
 }
 

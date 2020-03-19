@@ -17,6 +17,7 @@ import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ProfileComponent } from './profile/profile.component';
+import { PostCaseComponent } from './post-case/post-case.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     CaseComponent,
     AllCasesComponent,
-    ProfileComponent
+    ProfileComponent,
+    PostCaseComponent
   ],
   imports: [
     BrowserModule,

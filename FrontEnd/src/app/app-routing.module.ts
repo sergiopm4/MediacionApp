@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { CaseComponent } from './case/case.component';
 import { AllCasesComponent } from './all-cases/all-cases.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PostCaseComponent } from './post-case/post-case.component';
 
 
 const routes: Routes = [
@@ -13,9 +14,10 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'allcases', component: AllCasesComponent },
+  { path: 'allCases', component: AllCasesComponent },
   { path: 'case', component: CaseComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'postCase', component: PostCaseComponent },
   { path: '**', component: HomeComponent }
 
 ];

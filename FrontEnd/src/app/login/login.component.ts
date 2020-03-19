@@ -26,6 +26,21 @@ export class LoginComponent {
 
   get f() { return this.loginForm.controls; }
 
+  // getLoginError(errorCode: string) {
+  //   switch (errorCode) {
+  //     case 'EMAIL_INVALID':
+  //       return 'El EMAIL no existe'
+  //       break;
+  //     case 'PASSWORD_INVALID':
+  //       return 'Contraseña incorrecta'
+  //       break;
+
+  //     default:
+  //       return 'Unknown error'
+  //       break;
+  //   }
+  // }
+
   login() {
     this.submitted = true;
 
@@ -51,14 +66,16 @@ export class LoginComponent {
               timer: 1500
             })
 
-            this._router.navigateByUrl("/allcases")
+            this._router.navigateByUrl("/allCases")
 
           }
-          if (response['Error'] === 'Password is not correct.') {
+
+          if (response['Error'] === 'PASSWORD_INVALID') {
             Swal.fire({
               position: 'top-end',
               icon: 'error',
-              title: 'Constraseña incorrecta!',
+              title: 'Contraseña incorrecta',
+              // title: this.getLoginError(response['Error']),
               showConfirmButton: false,
               timer: 2000
             })
@@ -68,12 +85,12 @@ export class LoginComponent {
             }, 1000)
           }
 
-          //ESTO NO FUNCIONA, REVISAR
-          if (response['Error'] === 'Email does not exist.') {
+          if (response['Error'] === 'EMAIL_INVALID') {
             Swal.fire({
               position: 'top-end',
               icon: 'error',
-              title: 'El email no es correcto!',
+              title: 'Email incorrecto',
+              // title: this.getLoginError(response['Error']),
               showConfirmButton: false,
               timer: 2000
             })
@@ -82,6 +99,7 @@ export class LoginComponent {
 
             }, 1000)
           }
+
         })
 
       this.loading = true;
