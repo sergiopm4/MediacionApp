@@ -7,6 +7,7 @@
             <button *ngIf="!_userService.isLogged" routerLink="/login"
                 class="btn btn-primary my-2 my-sm-0 font-weight-bold" type="submit">Iniciar
                 sesión</button>
+            <a href="" *ngIf="_userService.isLogged" routerLink="/profile">Mi cuenta</a>
             <button *ngIf="_userService.isLogged" (click)="closeSession()"
                 class="btn btn-outline-secondary my-2 my-sm-0 font-weight-bold" type="submit">Cerrar sesión</button>
         </form>

@@ -10,7 +10,7 @@ secrets = JSON.parse(secrets);
 
 //. Register
 exports.register = (req, res) => {
-    // if (req.body['firstName'] && req.body['lastName'] && req.body['password'] && req.body['email'] && req.body['age']) {
+    // if (req.body['firstName'] && req.body['lastName'] && req.body['password'] && req.body['email'] && req.body['location']) {
 
     if (req.body['password'] && req.body['email']) {
 
@@ -32,12 +32,12 @@ exports.register = (req, res) => {
                         "lastName": req.body.lastName,
                         "password": hash,
                         "email": req.body.email,
-                        "age": req.body.age,
+                        "location": req.body.location,
                         "registerDate": Date.now()
                     });
                     newUser.save((err, result) => {
                         if (err) throw err;
-                        res.send({ "Message": "User saved!", "_id": result._id })
+                        res.send({ "Message": "User saved", "_id": result._id })
                     })
                 })
             }

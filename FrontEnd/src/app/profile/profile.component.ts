@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MainService } from '../services/main.service';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-profile',
@@ -7,7 +13,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(public _mainService: MainService, public _userService: UserService, public formBuilder: FormBuilder, public _router: Router) {
+    this.profileForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      location: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', Validators.required],
+    }, { validator: this._userService.matchValidator('password', 'confirmPassword') });
+  }
+
+  profileForm: FormGroup;
+  submitted = false;
+  loading = false;
+
+  get f() { return this.profileForm.controls; }
+
+  updateProfile() {
+    this._mainService.updateProfile(this.profileForm.value)
+      .subscribe((response) => {
+        if (response['Message'] === 'User modified') {
+
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Datos guardados!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
+          this._router.navigateByUrl("/allcases")
+
+        }
+        console.log(response);
+        this.loading = true;
+
+      })
+  }
+
+
+
 
   ngOnInit(): void {
   }

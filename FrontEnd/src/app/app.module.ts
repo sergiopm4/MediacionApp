@@ -19,7 +19,6 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ProfileComponent } from './profile/profile.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +35,7 @@ import { ProfileComponent } from './profile/profile.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    SweetAlert2Module
+    SweetAlert2Module,
   ],
   providers: [MainService, UserService],
   bootstrap: [AppComponent]

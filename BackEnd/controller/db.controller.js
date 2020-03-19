@@ -27,7 +27,7 @@ exports.postOneCase = (req, res) => {
         const newCase = new Case(data);
         newCase.save((err, result) => {
             if (err) throw err;
-            res.send({ 'Message': 'Case post successfully.', '_id': result._id })
+            res.send({ 'Message': 'Case post successfully', '_id': result._id })
         })
     })
 
@@ -68,7 +68,7 @@ exports.editOneCase = (req, res) => {
         }
         Case.findOneAndUpdate(req.body._id, { $set: data }, (err, result) => {
             if (err) throw err;
-            res.send({ 'Message': 'Case modified.' })
+            res.send({ 'Message': 'Case modified' })
         })
     })
 }
@@ -79,7 +79,7 @@ exports.deleteOneCase = (req, res) => {
         const id = req.params.id;
         Case.findOneAndDelete(id, (err, result) => {
             if (err) throw err;
-            res.send({ 'Message': 'Case removed from the database.' })
+            res.send({ 'Message': 'Case removed from the database' })
         })
     })
 }
@@ -95,14 +95,14 @@ exports.createUser = (req, res) => {
             "lastName": req.body.lastName,
             "password": req.body.password,
             "email": req.body.email,
-            "age": req.body.age,
+            "location": req.body.location,
             "registerDate": Date.now()
         }
 
         const newUser = new User(data);
         newUser.save((err, result) => {
             if (err) throw err;
-            res.send({ 'Message': 'User created successfully.', '_id': result._id })
+            res.send({ 'Message': 'User created successfully', '_id': result._id })
         })
     })
 }
@@ -137,12 +137,12 @@ exports.editOneUser = (req, res) => {
             "lastName": req.body.lastName,
             "password": req.body.password,
             "email": req.body.email,
-            "age": req.body.age,
+            "location": req.body.location,
             "modificationDate": Date.now()
         }
         User.findOneAndUpdate(req.body._id, { $set: data }, (err, result) => {
             if (err) throw err;
-            res.send({ 'Message': 'User modified.' })
+            res.send({ 'Message': 'User modified' })
         })
     })
 }
@@ -153,7 +153,7 @@ exports.deleteOneUser = (req, res) => {
         const id = req.params.id;
         User.findOneAndDelete(id, (err, result) => {
             if (err) throw err;
-            res.send({ 'Message': 'User removed from the database.' })
+            res.send({ 'Message': 'User removed from the database' })
         })
     })
 }

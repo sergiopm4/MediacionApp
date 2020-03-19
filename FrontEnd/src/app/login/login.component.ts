@@ -62,10 +62,10 @@ export class LoginComponent {
               showConfirmButton: false,
               timer: 2000
             })
-            // setTimeout(() => {
-            //   location.reload();
+            setTimeout(() => {
+              location.reload();
 
-            // }, 1000)
+            }, 1000)
           }
 
           //ESTO NO FUNCIONA, REVISAR

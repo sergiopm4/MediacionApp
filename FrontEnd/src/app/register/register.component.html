@@ -83,7 +83,7 @@
                 <div class="card-body">
                     <form [formGroup]="registerForm" (ngSubmit)="register()">
                         <img class="mb-4" src="" alt="" width="72" height="72">
-                        <h1 class="h3 mb-3 font-weight-normal">Crea tu cuenta y completa tu perfil</h1>
+                        <h1 class="h3 mb-3 font-weight-normal">Crea tu cuenta y completa tu perfil en dos pasos!</h1>
 
                         <div class="form-group">
                             <label>Email</label>
@@ -119,8 +119,10 @@
                         <div class="checkbox mb-3">
                             <label>
                                 <input type="checkbox" formControlName="acceptTerms"
-                                    [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }"> Acepto los términos
-                                y condiciones
+                                    [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }">
+                                <a href=""> Acepto
+                                    los términos
+                                    y condiciones</a>
                                 <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">
                                     <div *ngIf="f.acceptTerms.errors.required">*Por favor, debes aceptar los
                                         términos y condiciones

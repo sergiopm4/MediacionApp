@@ -19,6 +19,10 @@ export class MainService {
     return this._http.post('http://localhost:3000/login', user);
   }
 
+  updateProfile(user: User) {
+    return this._http.put('http://localhost:3000/editOneUser', user)
+  }
+
 
 
 
