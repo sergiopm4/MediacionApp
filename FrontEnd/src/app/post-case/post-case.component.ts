@@ -17,8 +17,8 @@ export class PostCaseComponent {
       title: ['', Validators.required],
       methodology: ['', Validators.required],
       category: ['', Validators.required],
-      description: ['', Validators.required],
-      textArea: ['', Validators.required]
+      description: ['', Validators.required, Validators.maxLength(50)],
+      caseText: ['', Validators.required]
     });
   }
 
@@ -39,10 +39,22 @@ export class PostCaseComponent {
 
       this._mainService.postCase(this.postCaseForm.value)
         .subscribe((response) => {
-          console.log(response)
-        })
+          if (response['Message'] === 'CASE_POST_SUCCESS') {
+            // document["cookie"] = `sello=${response["token"]}`;
+            console.log(response)
 
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Caso subido!',
+              showConfirmButton: false,
+              timer: 1500
+            })
+
+            this._router.navigateByUrl("/case")
+
+          }
+        })
     }
   }
-
 }

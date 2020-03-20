@@ -65,7 +65,14 @@ exports.login = (req, res) => {
                 if (result) {
                     jwt.sign({ 'email': users['email'] }, secrets['jwt_clave'], (err, token) => {
                         if (err) throw err;
-                        res.cookie('sello', token);
+                        // res.cookie('sello', token);
+                        res.cookie('sello', token, {
+                            expires: new Date(Date.now() + 604800000),
+                            secure: false, // set to true if your using https
+                            httpOnly: true,
+                            path: '/',
+                        });
+
                         res.send({ 'Message': 'Welcome', 'token': token, 'id': users[0]['_id'] })
                     })
                 } else {

@@ -56,6 +56,8 @@ export class LoginComponent {
           if (response['Message'] === 'Welcome') {
             this._userService.isLogged = true;
             document["cookie"] = `sello=${response["token"]}`;
+            localStorage.setItem('token', response["token"]);
+            localStorage.setItem('id', response["id"]);
             console.log(response)
 
             Swal.fire({

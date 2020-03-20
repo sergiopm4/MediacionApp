@@ -13,34 +13,35 @@ mongoose.connect(secrets['mongo_login'], { useNewUrlParser: true, useUnifiedTopo
 //CRUD --Mediation Cases-- ***************************************************************
 //.Post a new case.
 exports.postOneCase = (req, res) => {
-    authController.checkToken(req, res, (req, res) => {
-        const data = {
-            "_id": mongoose.Types.ObjectId(),
-            "title": req.body.title,
-            "author": req.body.author,
-            "date": Date.now(),
-            "category": req.body.category,
-            "methodology": req.body.methodology,
-            "caseText": req.body.caseText
-        }
+    // authController.checkToken(req, res, (req, res) => {
+    const data = {
+        "_id": mongoose.Types.ObjectId(),
+        "title": req.body.title,
+        "author": req.body.author,
+        "date": Date.now(),
+        "category": req.body.category,
+        "methodology": req.body.methodology,
+        "description": req.body.description,
+        "caseText": req.body.caseText
+    }
 
-        const newCase = new Case(data);
-        newCase.save((err, result) => {
-            if (err) throw err;
-            res.send({ 'Message': 'Case post successfully', '_id': result._id })
-        })
+    const newCase = new Case(data);
+    newCase.save((err, result) => {
+        if (err) throw err;
+        res.send({ 'Message': 'CASE_POST_SUCCESS', '_id': result._id })
     })
+    // })
 
 }
 
 //.Get all cases
 exports.getAllCases = (req, res) => {
-    authController.checkToken(req, res, (req, res) => {
-        Case.find((err, cases) => {
-            if (err) throw err;
-            res.send(cases);
-        })
+    // authController.checkToken(req, res, (req, res) => {
+    Case.find((err, cases) => {
+        if (err) throw err;
+        res.send(cases);
     })
+    // })
 }
 
 

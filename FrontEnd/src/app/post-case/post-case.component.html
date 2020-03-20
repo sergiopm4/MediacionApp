@@ -19,16 +19,16 @@
 
                         <div class="form-group">
                             <label>Metodología</label>
-                            <!-- <select name="methodologySelect" formControlName="methodology" class="form-control"
+                            <select name="methodologySelect" formControlName="methodology" class="form-control"
                                 [ngClass]="{ 'is-invalid': submitted && f.methodology.errors }">
                                 <option value="">-- Select --</option>
-                                <option value="">Hardvar</option>
-                                <option value="">Circular Narrativa</option>
-                                <option value="">Transformativa</option>
-                                <option value="">Relacional</option>
-                            </select> -->
-                            <input type="text" formControlName="methodology" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.methodology.errors }" />
+                                <option value="Hardvar">Hardvar</option>
+                                <option value="Circular Narrativa">Circular Narrativa</option>
+                                <option value="Transformativa">Transformativa</option>
+                                <option value="Relacional">Relacional</option>
+                            </select>
+                            <!-- <input type="text" formControlName="methodology" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.methodology.errors }" /> -->
                             <div *ngIf="submitted && f.methodology.errors" class="invalid-feedback">
                                 <div *ngIf="f.methodology.errors.required">Indica la metodología aplicada</div>
                             </div>
@@ -36,16 +36,16 @@
 
                         <div class="form-group">
                             <label>Categoría</label>
-                            <!-- <select name="categorySelect" formControlName="category" class="form-control"
+                            <select name="categorySelect" formControlName="category" class="form-control"
                                 [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
                                 <option value="">-- Select --</option>
-                                <option value="">Familiar</option>
-                                <option value="">Empresarial</option>
-                                <option value="">Penal</option>
-                                <option value="">Escolar</option>
-                            </select> -->
-                            <input type="text" formControlName="category" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.category.errors }" />
+                                <option value="Familiar">Familiar</option>
+                                <option value="Empresarial">Empresarial</option>
+                                <option value="Penal">Penal</option>
+                                <option value="Escolar">Escolar</option>
+                            </select>
+                            <!-- <input type="text" formControlName="category" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.category.errors }" /> -->
                             <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
                                 <div *ngIf="f.category.errors.required">Indica la categoría</div>
                             </div>
@@ -57,18 +57,19 @@
                                 [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
                             <div *ngIf="submitted && f.description.errors" class="alert alert-danger">
                                 <div *ngIf="f.description.errors.required">Describe brevemente el caso</div>
+                                <div *ngIf="f.password.errors.maxlength">Máximo 50 caracteres</div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label>Caso en detalle:</label>
-                            <textarea formControlName="textArea" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.textArea.errors }" name="" id="" cols="30"
+                            <textarea formControlName="caseText" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.caseText.errors }" name="" id="" cols="30"
                                 rows="10"></textarea>
                             <!-- <input type="text" formControlName="email" class="form-control"
                                 [ngClass]="{ 'is-invalid': submitted && f.email.errors }" /> -->
-                            <div *ngIf="submitted && f.textArea.errors" class="invalid-feedback">
-                                <div *ngIf="f.textArea.errors.required">Describe brevemente el caso</div>
+                            <div *ngIf="submitted && f.caseText.errors" class="invalid-feedback">
+                                <div *ngIf="f.caseText.errors.required">Describe brevemente el caso</div>
                             </div>
                         </div>
 

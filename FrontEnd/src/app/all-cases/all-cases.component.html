@@ -31,6 +31,9 @@
     <!-- Seleccion de categorias -->
     <div class="nav-scroller py-1 mb-2 mt-4">
         <nav id="nav-links" class="nav d-flex justify-content-between">
+            <!-- *ngFor="let category of categories" -->
+            <!-- <a class="p-2 text-muted" href="#">{{category}}</a> -->
+            <!-- <a class="p-2 text-muted" (click)="filterCategory('Familiar')" href="#">Familiar</a> -->
             <a class="p-2 text-muted" href="#">Familiar</a>
             <a class="p-2 text-muted" href="#">Empresarial</a>
             <a class="p-2 text-muted" href="#">Escolar</a>
@@ -52,11 +55,12 @@
                     <input type="text" class="form-control" #inputSearch placeholder="Busca por mediador.."
                         aria-label="Search by term.." aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                        <button class="btn btn-warning btn-md button">Buscar</button>
+                        <button class="btn btn-warning btn-md button"
+                            (click)="filterByWord(inputSearch.value)">Buscar</button>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3"></div>
+            <div class=" col-md-3"></div>
         </div>
         <div class="row">
             <div class="col-md-3">
@@ -70,12 +74,13 @@
 
     <!-- Las cards con las noticias -->
     <div class="row">
-        <div class="col-md-4 my-3">
+        <div class="col-md-4 my-3" *ngFor="let case of dataCasesApi">
             <div class="card" style="width: 18rem;">
-                <img src="" class="card-img-top" alt="" height="175" width="175">
+                <!-- <img src="" class="card-img-top" alt="" height="175" width="175"> -->
                 <div class="card-body">
-                    <h5 class="card-title"></h5>
-                    <p></p>
+                    <h5 class="card-title">{{case.title}}</h5>
+                    <p>Método: <em>{{case.methodology}}</em></p>
+                    <p class="lead">{{case.description}}</p>
                     <a href="#" routerLink="/case" target="_blank" class="btn btn-warning button">Ir al caso</a>
                 </div>
             </div>

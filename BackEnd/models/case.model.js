@@ -27,6 +27,10 @@ const caseSchema = new mongoose.Schema({
         require: true,
         type: types.String
     },
+    "description": {
+        require: true,
+        type: types.String
+    },
     "caseText": {
         require: true,
         type: types.String
