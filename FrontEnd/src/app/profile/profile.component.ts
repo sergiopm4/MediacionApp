@@ -22,11 +22,21 @@ export class ProfileComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', Validators.required],
     }, { validator: this._userService.matchValidator('password', 'confirmPassword') });
+
+    //Coge el ID para pintar el DOM.
+    let id = localStorage.getItem('id');
+    this._mainService.getOneUser(id)
+      .subscribe((response) => {
+        console.log(response);
+        this.email = response['email'];
+      });
   }
 
   profileForm: FormGroup;
   submitted = false;
   loading = false;
+  email: string;
+
 
   get f() { return this.profileForm.controls; }
 
@@ -56,6 +66,7 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit(): void {
+
   }
 
 }

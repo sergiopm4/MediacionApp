@@ -1,33 +1,42 @@
 <header class="">
-    <nav class="navbar navbar-light bg-light py-3 fixed-top">
-        <a class="navbar-brand"><img src="" alt="logo"></a>
-        <button routerLink="/allCases">TODOS LOS CASOS</button>
-
+    <nav class="navbar navbar-light py-3 fixed-top" id="navbar">
+        <!-- <a class="navbar-brand"><img src="" alt="logo"></a> -->
+        <a href="">
+            <h2 id="logo-title" routerLink="/home">MediacionApp</h2>
+        </a>
         <form class="form-inline">
             <button *ngIf="!_userService.isLogged" routerLink="/login"
-                class="btn btn-primary my-2 my-sm-0 font-weight-bold" type="submit">Iniciar
+                class="btn btn-info my-2 mr-2 my-sm-0 font-weight-bold" id="btn-session" type="submit">Iniciar
                 sesión</button>
-            <a href="" *ngIf="_userService.isLogged" routerLink="/profile">Mi cuenta</a>
+            <a href="" *ngIf="_userService.isLogged" routerLink="/profile">
+                <i class="fa fa-user-circle-o mr-3" style="font-size:30px;color:white;"></i>
+            </a>
             <button *ngIf="_userService.isLogged" (click)="closeSession()"
-                class="btn btn-outline-secondary my-2 my-sm-0 font-weight-bold" type="submit">Cerrar sesión</button>
+                class="btn btn-outline-warning my-2 my-sm-0 font-weight-bold" type="submit">Cerrar sesión</button>
         </form>
     </nav>
 </header>
 
-<section>
+<section id="section-1">
     <div class="container py-5 text-black">
         <div class="row">
             <div class="col-md-6">
                 <h1>La mediación y sus aspectos importantes</h1>
                 <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem minus ea molestiae
                     facere et necessitatibus commodi vero consequatur, pariatur, veniam at ipsa? Iure laborum libero
-                    nemo laudantium! Adipisci, alias quisquam.</p>
+                    nemo laudantium! Adipisci, alias quisquam.
+                </p>
+                <p class="lead"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo atque eligendi,
+                    asperiores perferendis
+                    architecto voluptates placeat facere? Tempore,</p>
             </div>
-            <div class="col-md-6"><img src="../../assets/manos.jpg" alt="imagen-1" width="600"></div>
+            <div class="col-md-6"><img id="img-1" src="../../assets//img/section-1.jpg" alt="imagen-1" width="600">
+            </div>
             <div class="input-group">
                 <form action="/register" method="POST">
                     <input class="form-control" type="email" placeholder="Correo electrónico">
-                    <button routerLink="/register" type="submit" class="btn btn-secondary btn-lg mt-2">¿Mediador?.
+                    <button id="btn-register-free" routerLink="/register" type="submit"
+                        class="btn btn-secondary btn-lg mt-2">¿Mediador?.
                         ¡Regístrate gratis!</button>
                 </form>
             </div>
@@ -35,16 +44,17 @@
     </div>
 </section>
 <!-- section 2 -->
-<section>
-    <div class="container py-5 text-black">
-        <div class="row">
+<section id="section-2">
+    <div class=" container py-5 text-black">
+        <div class=" row">
             <div class="col-md-6">
                 <h3>Encuentra una base de datos con miles de casos de consulta</h3>
                 <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum perspiciatis?</p>
-                <button routerLink="/register" class=" btn btn-success btn-lg">Empieza ya!</button>
+                <button id="btn-start-now" routerLink="/register"
+                    class=" btn btn-success btn-lg font-weight-bold">Empieza ya!</button>
 
             </div>
-            <div class="col-md-6"><img src="" alt="img-boceto-foro"></div>
+            <div class="col-md-6"><img id="img-2" src="../../assets/manos.jpg" width="600" alt="img-boceto-foro"></div>
         </div>
     </div>
 </section>
@@ -71,14 +81,14 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">gg</div>
-            <div class="col-md-4">fdf</div>
+            <div class="col-md-4"><i class="fa fa-car fa-5x"></i></div>
+            <div class="col-md-4"><i class="fa fa-user-circle-o"></i></div>
             <div class="col-md-4">dfdf</div>
         </div>
     </div>
 </section>
 <!-- section 5 -->
-<section>
+<section id="section-5">
     <div class="container text-center py-5 text-black">
         <div class="row">
             <div class="col-md-6 offset-md-3">

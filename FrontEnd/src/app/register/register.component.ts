@@ -49,6 +49,7 @@ export class RegisterComponent {
               timer: 2500
             })
             console.log(response);
+            localStorage.setItem('id', response['_id']);
             this._router.navigateByUrl("/profile")
           }
 

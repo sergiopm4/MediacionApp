@@ -121,13 +121,13 @@ exports.getAllUsers = (req, res) => {
 
 //.Get one user
 exports.getOneUser = (req, res) => {
-    authController.checkToken(req, res, (req, res) => {
-        const id = req.params.id;
-        User.findById(id, (err, result) => {
-            if (err) throw err;
-            res.send(result);
-        })
+    // authController.checkToken(req, res, (req, res) => {
+    const id = req.params.id;
+    User.findById(id, (err, result) => {
+        if (err) throw err;
+        res.send(result);
     })
+    // })
 }
 
 //.Edit one user

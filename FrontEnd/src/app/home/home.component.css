@@ -1,0 +1,38 @@
+#navbar {
+    background-color:rgb(8, 76, 139);
+}
+#logo-title{
+    font-family: 'Pacifico', cursive;
+    color: white;
+}
+#img-1{
+    border-radius: 6%;
+}
+#img-2{
+    border-radius: 50%;
+}
+#section-1{
+    padding-top: 70px;
+}
+
+#section-2, #section-5{
+    background: rgba(8, 76, 139, 0.205);
+}
+
+#btn-session{
+    border-color: white;
+    background-color: white;
+    color: rgb(8, 76, 139);
+    
+}
+#btn-session:hover, #btn-start-now:hover, #btn-register-free:hover{
+    border-color: rgb(65, 199, 132);
+    background-color: rgb(65, 199, 132);
+    color: white    ;
+}
+
+#btn-register-free, #btn-start-now{
+    border-color: rgb(8, 76, 139);
+    background-color: rgb(8, 76, 139);
+    color: white    ;
+}

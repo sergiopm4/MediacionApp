@@ -28,6 +28,10 @@ export class MainService {
     return this._http.put(`${this.url}/editOneUser`, user);
   }
 
+  getOneUser(id: any) {
+    return this._http.get(`${this.url}/getOneUser/${id}`)
+  }
+
 
 
   //CRUD Cases.
