@@ -9,10 +9,11 @@
                 class="btn btn-info my-2 mr-2 my-sm-0 font-weight-bold" id="btn-session" type="submit">Iniciar
                 sesión</button>
             <a href="" *ngIf="_userService.isLogged" routerLink="/profile">
-                <i class="fa fa-user-circle-o mr-3" style="font-size:30px;color:white;"></i>
+                <i class="fa fa-user-circle-o mx-3" style="font-size:30px;color:white;"></i>
             </a>
+            <a id="foro-link" routerLink="/allCases" *ngIf="_userService.isLogged">Ir a Casos</a>
             <button *ngIf="_userService.isLogged" (click)="closeSession()"
-                class="btn btn-outline-warning my-2 my-sm-0 font-weight-bold" type="submit">Cerrar sesión</button>
+                class="btn btn-outline-warning my-2 ml-3 my-sm-0 font-weight-bold" type="submit">Cerrar sesión</button>
         </form>
     </nav>
 </header>
@@ -80,10 +81,14 @@
                 <p class="lead">todo lo que la mediacion tiene lpoasjad ajskajs porue poj gdkj as fkld fk df</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4"><i class="fa fa-car fa-5x"></i></div>
-            <div class="col-md-4"><i class="fa fa-user-circle-o"></i></div>
-            <div class="col-md-4">dfdf</div>
+        <div class="row mt-5">
+            <div class="col-md-4"><i class="fa fa-clock-o fa-4x mb-3"></i><br> Ahorra tiempo en la gestión</div>
+            <div class="col-md-4"><i class="fa fa-balance-scale fa-4x mb-3"></i><br>Permite asumir menos costes
+                económicos,
+                judiciales, etc</div>
+            <div class="col-md-4"><i class="fa fa-calendar fa-4x mb-3"></i><br>Programa citas con tus nuevos
+                Mediadores de
+                forma Online</div>
         </div>
     </div>
 </section>
@@ -142,5 +147,5 @@
     </div>
 </section>
 <footer>
-    <p class="mt-5 mb-3 text-muted lead">&copy; 2017-2019</p>
+    <p class="mt-5 mb-3 text-muted lead">&copy; 2020-2021</p>
 </footer>

@@ -1,0 +1,50 @@
+#section-all{
+    background-color: rgba(8, 76, 139, 0.205);
+    padding-top: 20px;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(175, 175, 245, 0.925);
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba(175, 175, 245, 0.678);
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgba(175, 175, 245, 0.678);
+  }
+
+#btn-save:hover{
+    border-color: rgb(65, 199, 132);
+    background-color: rgb(65, 199, 132);
+    color: white    ;
+}
+
+#btn-save{
+    border-color: rgb(8, 76, 139);
+    background-color: rgb(8, 76, 139);
+    color: white    ;
+}
+#title{
+    cursor: pointer;
+}
+
+
+.pafs{
+    font-size: 17px;
+    color: rgb(8, 76, 139);
+}
+.card-header{
+    background-color: rgba(8, 76, 139, 0.698);
+}
+
+h1{
+    font-weight: bold;
+    font-size: 35px;
+    color: rgb(8, 76, 139);
+}
+
+#case-description{
+    font-size: 16px;
+}

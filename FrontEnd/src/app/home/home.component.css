@@ -25,6 +25,9 @@
     color: rgb(8, 76, 139);
     
 }
+#foro-link{
+    color: white;
+}
 #btn-session:hover, #btn-start-now:hover, #btn-register-free:hover{
     border-color: rgb(65, 199, 132);
     background-color: rgb(65, 199, 132);

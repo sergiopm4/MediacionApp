@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MainService } from '../services/main.service';
+
+
 
 @Component({
   selector: 'app-case',
@@ -7,7 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CaseComponent implements OnInit {
 
-  constructor() { }
+  index: string = "";
+
+  constructor(public _rute: ActivatedRoute, public _mainService: MainService) {
+    this.index = _rute.snapshot.params["id"];
+
+  }
 
   ngOnInit(): void {
   }

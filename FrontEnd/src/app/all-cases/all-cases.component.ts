@@ -10,46 +10,43 @@ import { Router } from '@angular/router';
 })
 export class AllCasesComponent implements OnInit {
 
-  constructor(public _userService: UserService, public _router: Router, public _mainService: MainService) {
+  constructor(public _userService: UserService, public _router: Router, public _mainService: MainService) { }
 
-    this._mainService.getAllCases().subscribe((response) => {
-      this.dataCasesApi = response;
-      console.log(this.dataCasesApi);
-    })
+  // categories: string[] = ["Familiar", "Empresarial", "Escolar", "Social", "Sanitaria", "Penal", "Penitenciaria"];
 
-
-  }
-  categories: string[] = ["Familiar", "Empresarial", "Escolar", "Social", "Sanitaria", "Penal", "Penitenciaria"];
-  dataCasesApi: any;
-  dataCasesFilteredApi: any;
 
   closeSession() {
     this._userService.isLogged = false;
     this._router.navigateByUrl('/home');
   }
+  refresh() {
+    location.reload();
+  }
 
-  // filterCategory(category: string) {
-  //   this._mainService.getAllCases().subscribe((response) => {
-  //     for (let i = 0; i < response.length; i++) {
-  //       if (this.response[i]['category'] === category) {
-  //         this.dataCasesApi = this.dataCasesFilteredApi;
-  //       }
-  //     }
-  //   })
-  // }
+  filterCategory(category: string) {
+    this._mainService.dataCasesFilteredApi = [];
+    for (let i = 0; i < this._mainService.dataCasesApi.length; i++) {
+      if (this._mainService.dataCasesApi[i]['category'] === category) {
+        this._mainService.dataCasesFilteredApi.push(this._mainService.dataCasesApi[i])
+        this._mainService.dataCasesApi = this._mainService.dataCasesFilteredApi;
+      }
+    }
+    return this._mainService.dataCasesFilteredApi;
+
+  }
 
   filterByWord(word: string) {
     word = word.toLowerCase().trim(); //el trim() te quita los espacios del principio de la palabra.
-    this.dataCasesFilteredApi = []; //esto es para vaciar la busqueda cada vez que buscas.
+    this._mainService.dataCasesFilteredApi = []; //esto es para vaciar la busqueda cada vez que buscas.
 
-    for (let obj of this.dataCasesApi) {
+    for (let obj of this._mainService.dataCasesApi) {
       let categoryData = obj["category"].toLowerCase();
       if (categoryData.indexOf(word) >= 0) {
-        this.dataCasesFilteredApi.push(obj);
-        this.dataCasesApi = this.dataCasesFilteredApi;
+        this._mainService.dataCasesFilteredApi.push(obj);
+        this._mainService.dataCasesApi = this._mainService.dataCasesFilteredApi;
       }
     }
-    return this.dataCasesFilteredApi;
+    return this._mainService.dataCasesFilteredApi;
   }
 
 

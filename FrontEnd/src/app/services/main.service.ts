@@ -10,9 +10,16 @@ import { Case } from '../models/Case';
 })
 export class MainService {
 
-  constructor(public _http: HttpClient) { }
+  constructor(public _http: HttpClient) {
+    _http.get(`${this.url}/getAllCases`).subscribe((response) => {
+      this.dataCasesApi = response;
+      console.log(this.dataCasesApi)
+    })
+  }
 
   url: string = 'http://localhost:3000';
+  dataCasesApi: any;
+  dataCasesFilteredApi: any;
 
 
   //CRUD User.
@@ -44,11 +51,11 @@ export class MainService {
     return this._http.post(`${this.url}/postCase`, caso);
   }
 
-  getAllCases() {
-    return this._http.get(`${this.url}/getAllCases`);
-  }
-
 }
+
+
+// Functions shared
+
 
 
 

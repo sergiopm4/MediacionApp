@@ -1,20 +1,25 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-            <div class="jumbotron">
-                <h1 class="display-4">Titulo del caso</h1>
-                <p>breve descripcion del caso</p>
+<section id="section-all">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="jumbotron">
+                    <h1 class="display-4">{{_mainService.dataCasesApi[index].title}}</h1>
+                    <p>{{_mainService.dataCasesApi[index].description}}</p>
 
-                <hr class="my-4">
-                <p>contenido del caso</p>
+                    <hr class="my-4">
+                    <p>Método: <em>{{_mainService.dataCasesApi[index].methodology}}</em></p>
+                    <p>Categoría: <em>{{_mainService.dataCasesApi[index].category}}</em></p>
+                    <br>
+                    <p>{{_mainService.dataCasesApi[index].caseText}}</p>
 
-                <p class="lead"><strong><a href="" target="_blank" rel="noopener noreferrer">Read full case
-                            here!</a></strong></p>
-                <p class="lead">Source: Pepito Pérez</p>
-                <a class="btn btn-warning btn-lg" routerLink="/allCases" role="button">Back to cases</a>
+                    <p class="lead"><strong><a href="" target="_blank" rel="noopener noreferrer">Responder al
+                                autor</a></strong></p>
+                    <p class="lead">Autor: Pepito Pérez</p>
+                    <!-- <button class="btn btn-warning btn-lg" onclik="self.close()" type="button">Cerrar</button> -->
+                </div>
             </div>
+            <div class="col-md-1"></div>
         </div>
-        <div class="col-md-1"></div>
     </div>
-</div>
+</section>

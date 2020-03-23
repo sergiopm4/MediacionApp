@@ -1,91 +1,94 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <div class="card w-200">
-                <div class="card-header"></div>
-                <div class="card-body">
-                    <form [formGroup]="postCaseForm" (ngSubmit)="postCase()">
-                        <img class="mb-4" src="" alt="" width="72" height="72">
-                        <h1 class="h3 mb-3 font-weight-normal text-center">Escribe tu caso en detalle</h1>
+<section id="section-all">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card w-200">
+                    <div class="card-header"></div>
+                    <div class="card-body">
+                        <form [formGroup]="postCaseForm" (ngSubmit)="postCase()">
+                            <img class="mb-4" src="" alt="" width="72" height="72">
+                            <h1 class="h3 mb-3 font-weight-normal text-center">Escribe tu caso en detalle</h1>
 
-                        <div class="form-group">
-                            <label>Titulo</label>
-                            <input type="text" formControlName="title" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
-                            <div *ngIf="submitted && f.title.errors" class="alert alert-danger">
-                                <div *ngIf="f.title.errors.required">Pon un título al caso</div>
+                            <div class="form-group">
+                                <label>Titulo</label>
+                                <input type="text" formControlName="title" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
+                                <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                                    <div *ngIf="f.title.errors.required">Pon un título al caso</div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label>Metodología</label>
-                            <select name="methodologySelect" formControlName="methodology" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.methodology.errors }">
-                                <option value="">-- Select --</option>
-                                <option value="Hardvar">Hardvar</option>
-                                <option value="Circular Narrativa">Circular Narrativa</option>
-                                <option value="Transformativa">Transformativa</option>
-                                <option value="Relacional">Relacional</option>
-                            </select>
-                            <!-- <input type="text" formControlName="methodology" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.methodology.errors }" /> -->
-                            <div *ngIf="submitted && f.methodology.errors" class="invalid-feedback">
-                                <div *ngIf="f.methodology.errors.required">Indica la metodología aplicada</div>
+                            <div class="form-group">
+                                <label>Metodología</label>
+                                <select name="methodologySelect" formControlName="methodology" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.methodology.errors }">
+                                    <option value="">-- Select --</option>
+                                    <option value="Hardvar">Hardvar</option>
+                                    <option value="Circular Narrativa">Circular Narrativa</option>
+                                    <option value="Transformativa">Transformativa</option>
+                                    <option value="Relacional">Relacional</option>
+                                </select>
+                                <!-- <input type="text" formControlName="methodology" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.methodology.errors }" /> -->
+                                <div *ngIf="submitted && f.methodology.errors" class="invalid-feedback">
+                                    <div *ngIf="f.methodology.errors.required">Indica la metodología aplicada</div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label>Categoría</label>
-                            <select name="categorySelect" formControlName="category" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
-                                <option value="">-- Select --</option>
-                                <option value="Familiar">Familiar</option>
-                                <option value="Empresarial">Empresarial</option>
-                                <option value="Penal">Penal</option>
-                                <option value="Escolar">Escolar</option>
-                            </select>
-                            <!-- <input type="text" formControlName="category" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.category.errors }" /> -->
-                            <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
-                                <div *ngIf="f.category.errors.required">Indica la categoría</div>
+                            <div class="form-group">
+                                <label>Categoría</label>
+                                <select name="categorySelect" formControlName="category" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
+                                    <option value="">-- Select --</option>
+                                    <option value="Familiar">Familiar</option>
+                                    <option value="Empresarial">Empresarial</option>
+                                    <option value="Penal">Penal</option>
+                                    <option value="Escolar">Escolar</option>
+                                </select>
+                                <!-- <input type="text" formControlName="category" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.category.errors }" /> -->
+                                <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
+                                    <div *ngIf="f.category.errors.required">Indica la categoría</div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label>Descripción</label>
-                            <input type="text" formControlName="description" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
-                            <div *ngIf="submitted && f.description.errors" class="alert alert-danger">
-                                <div *ngIf="f.description.errors.required">Describe brevemente el caso</div>
-                                <div *ngIf="f.password.errors.maxlength">Máximo 50 caracteres</div>
+                            <div class="form-group">
+                                <label>Descripción</label>
+                                <input type="text" formControlName="description" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+                                <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                                    <div *ngIf="f.description.errors.required">Describe brevemente el caso</div>
+                                    <div *ngIf="f.password.errors.maxlength">Máximo 50 caracteres</div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label>Caso en detalle:</label>
-                            <textarea formControlName="caseText" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.caseText.errors }" name="" id="" cols="30"
-                                rows="10"></textarea>
-                            <!-- <input type="text" formControlName="email" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" /> -->
-                            <div *ngIf="submitted && f.caseText.errors" class="invalid-feedback">
-                                <div *ngIf="f.caseText.errors.required">Describe brevemente el caso</div>
+                            <div class="form-group">
+                                <label>Caso en detalle:</label>
+                                <textarea formControlName="caseText" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.caseText.errors }" name="" id="" cols="30"
+                                    rows="10"></textarea>
+                                <!-- <input type="text" formControlName="email" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" /> -->
+                                <div *ngIf="submitted && f.caseText.errors" class="invalid-feedback">
+                                    <div *ngIf="f.caseText.errors.required">Describe brevemente el caso</div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <button [disabled]="loading && !postCaseForm.valid" class="btn btn-primary">Guardar
-                                caso</button>
-                            <a href="" routerLink="/allCases" class="ml-3">Volver</a>
+                            <div class="form-group">
+                                <button id="btn-save" [disabled]="loading && !postCaseForm.valid"
+                                    class="btn btn-primary btn-lg">Guardar
+                                    caso</button>
+                                <a href="" routerLink="/allCases" class="ml-3">Volver</a>
 
-                            <img *ngIf="loading"
-                                src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
-                                alt="">
-                        </div>
+                                <img *ngIf="loading"
+                                    src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+                                    alt="">
+                            </div>
 
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>

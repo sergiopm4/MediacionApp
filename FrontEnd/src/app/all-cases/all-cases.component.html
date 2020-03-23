@@ -1,89 +1,93 @@
-<div class="container">
-    <header class="blog-header py-3">
-        <div class="row flex-nowrap justify-content-between align-items-center">
-            <!-- Country selection -->
-            <div class="col-3 pt-1">
-                <a class="btn btn-outline-primary btn-md button" routerLink="/home">Home</a>
+<section id="section-all">
+    <div class="container">
+        <header class="blog-header py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <!-- Country selection -->
+                <div class="col-3 pt-1">
+                    <a class="btn btn-outline-primary btn-md button" id="btn-home" routerLink="/home">Ir a Inicio</a>
 
-                <!-- <p id="selectCountry" class="lead">Selecciona metodología</p>
-                <select name="miselect" class="form-control">
-                    <option id="optionsSelect" value="">Harvard</option>
-                    <option id="optionsSelect" value="">Circular Narrativa</option>
-                    <option id="optionsSelect" value="">Transformativa</option>
-                    <option id="optionsSelect" value="">Relacional</option>
-                </select> -->
+                    <!-- <p id="selectCountry" class="lead">Selecciona metodología</p>
+                    <select name="miselect" class="form-control">
+                        <option id="optionsSelect" value="">Harvard</option>
+                        <option id="optionsSelect" value="">Circular Narrativa</option>
+                        <option id="optionsSelect" value="">Transformativa</option>
+                        <option id="optionsSelect" value="">Relacional</option>
+                    </select> -->
+                </div>
+                <div class="col-6 text-center">
+                    <h1 id="head-title">
+                        <a id="title" class="blog-header-logo text-dark" (click)="refresh()">Casos Mediación</a>
+                    </h1>
+                </div>
+                <div class="col-3 d-flex justify-content-end align-items-center">
+
+                    <a (click)="closeSession()" class="btn btn-outline-dark btn-md button" href="#">Cerrar sesión</a>
+
+                </div>
             </div>
-            <div class="col-6 text-center">
-                <h1 id="head-title">
-                    <a class="blog-header-logo text-dark" href="#">Casos Mediación</a>
-                </h1>
+        </header>
+
+
+
+        <!-- Seleccion de categorias -->
+        <div class="nav-scroller py-1 mb-2 mt-4">
+            <nav id="nav-links" class="nav d-flex justify-content-between pafs">
+                <!-- *ngFor="let category of categories" -->
+                <!-- <a class="p-2 text-muted" href="#">{{category}}</a> -->
+                <!-- <a class="p-2 text-muted" (click)="filterCategory('Familiar')" href="#">Familiar</a> -->
+                <a class="p-2 text-muted" routerLink="/allCases" (click)="filterCategory('Familiar')">Familiar</a>
+                <a class="p-2 text-muted" routerLink="/allCases" (click)="filterCategory('Empresarial')">Empresarial</a>
+                <a class="p-2 text-muted" routerLink="/allCases" (click)="filterCategory('Escolar')">Escolar</a>
+                <a class="p-2 text-muted" routerLink="/allCases" (click)="filterCategory('Social')">Social</a>
+                <a class="p-2 text-muted" routerLink="/allCases" (click)="filterCategory('Sanitaria')">Sanitaria</a>
+                <a class="p-2 text-muted" routerLink="/allCases" (click)="filterCategory('Penal')">Penal</a>
+                <a class="p-2 text-muted" routerLink="/allCases"
+                    (click)="filterCategory('Penitenciaria')">Penitenciaria</a>
+            </nav>
+        </div>
+
+
+
+        <!-- El input de search por palabra -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" #inputSearch placeholder="Busca por mediador.."
+                            aria-label="Search by term.." aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button id="btn-search" class="btn btn-warning btn-md button"
+                                (click)="filterCategory(inputSearch.value)">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-md-3"></div>
             </div>
-            <div class="col-3 d-flex justify-content-end align-items-center">
-
-                <a (click)="closeSession()" class="btn btn-outline-dark btn-md button" href="#">Cerrar sesión</a>
-
+            <div class="row">
+                <div class="col-md-3">
+                    <button class="btn btn-warning btn-md button" routerLink="/postCase">+ Nuevo caso</button>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-3"></div>
             </div>
         </div>
-    </header>
 
 
-
-    <!-- Seleccion de categorias -->
-    <div class="nav-scroller py-1 mb-2 mt-4">
-        <nav id="nav-links" class="nav d-flex justify-content-between">
-            <!-- *ngFor="let category of categories" -->
-            <!-- <a class="p-2 text-muted" href="#">{{category}}</a> -->
-            <!-- <a class="p-2 text-muted" (click)="filterCategory('Familiar')" href="#">Familiar</a> -->
-            <a class="p-2 text-muted" href="#">Familiar</a>
-            <a class="p-2 text-muted" href="#">Empresarial</a>
-            <a class="p-2 text-muted" href="#">Escolar</a>
-            <a class="p-2 text-muted" href="#">Social</a>
-            <a class="p-2 text-muted" href="#">Sanitaria</a>
-            <a class="p-2 text-muted" href="#">Penal</a>
-            <a class="p-2 text-muted" href="#">Penitenciaria</a>
-        </nav>
-    </div>
-
-
-
-    <!-- El input de search por palabra -->
-    <div class="container">
+        <!-- Las cards con las noticias -->
         <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" #inputSearch placeholder="Busca por mediador.."
-                        aria-label="Search by term.." aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-warning btn-md button"
-                            (click)="filterByWord(inputSearch.value)">Buscar</button>
+            <div class="col-md-4 my-3" *ngFor="let case of _mainService.dataCasesApi;let i = index">
+                <div class="card" style="width: 18rem;">
+                    <!-- <img src="" class="card-img-top" alt="" height="175" width="175"> -->
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>{{case.title}}</strong></h5>
+                        <p>Método: <em>{{case.methodology}}</em></p>
+                        <p class="lead" id="case-description">{{case.description}}</p>
+                        <a routerLink="/case/{{i}}" target="_blank" id="btn-go-case" class="btn btn-warning button">Ir
+                            al caso</a>
                     </div>
                 </div>
             </div>
-            <div class=" col-md-3"></div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <button class="btn btn-warning btn-md button" routerLink="/postCase">+ Nuevo caso</button>
-            </div>
-            <div class="col-md-3"></div>
-            <div class="col-md-3"></div>
         </div>
     </div>
-
-
-    <!-- Las cards con las noticias -->
-    <div class="row">
-        <div class="col-md-4 my-3" *ngFor="let case of dataCasesApi">
-            <div class="card" style="width: 18rem;">
-                <!-- <img src="" class="card-img-top" alt="" height="175" width="175"> -->
-                <div class="card-body">
-                    <h5 class="card-title">{{case.title}}</h5>
-                    <p>Método: <em>{{case.methodology}}</em></p>
-                    <p class="lead">{{case.description}}</p>
-                    <a href="#" routerLink="/case" target="_blank" class="btn btn-warning button">Ir al caso</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+</section>
