@@ -28,10 +28,10 @@ export class AllCasesComponent implements OnInit {
     for (let i = 0; i < this._mainService.dataCasesApi.length; i++) {
       if (this._mainService.dataCasesApi[i]['category'] === category) {
         this._mainService.dataCasesFilteredApi.push(this._mainService.dataCasesApi[i])
-        this._mainService.dataCasesApi = this._mainService.dataCasesFilteredApi;
       }
     }
-    return this._mainService.dataCasesFilteredApi;
+
+    this._mainService.dataCasesApi = this._mainService.dataCasesFilteredApi;
 
   }
 
@@ -43,9 +43,10 @@ export class AllCasesComponent implements OnInit {
       let categoryData = obj["category"].toLowerCase();
       if (categoryData.indexOf(word) >= 0) {
         this._mainService.dataCasesFilteredApi.push(obj);
-        this._mainService.dataCasesApi = this._mainService.dataCasesFilteredApi;
       }
     }
+    this._mainService.dataCasesApi = this._mainService.dataCasesFilteredApi;
+
     return this._mainService.dataCasesFilteredApi;
   }
 

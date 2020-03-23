@@ -13,24 +13,24 @@ mongoose.connect(secrets['mongo_login'], { useNewUrlParser: true, useUnifiedTopo
 //CRUD --Mediation Cases-- ***************************************************************
 //.Post a new case.
 exports.postOneCase = (req, res) => {
-    // authController.checkToken(req, res, (req, res) => {
-    const data = {
-        "_id": mongoose.Types.ObjectId(),
-        "title": req.body.title,
-        "author": req.body.author,
-        "date": Date.now(),
-        "category": req.body.category,
-        "methodology": req.body.methodology,
-        "description": req.body.description,
-        "caseText": req.body.caseText
-    }
+    authController.checkToken(req, res, (req, res) => {
+        const data = {
+            "_id": mongoose.Types.ObjectId(),
+            "title": req.body.title,
+            "author": req.body.author,
+            "date": Date.now(),
+            "category": req.body.category,
+            "methodology": req.body.methodology,
+            "description": req.body.description,
+            "caseText": req.body.caseText
+        }
 
-    const newCase = new Case(data);
-    newCase.save((err, result) => {
-        if (err) throw err;
-        res.send({ 'Message': 'CASE_POST_SUCCESS', '_id': result._id })
+        const newCase = new Case(data);
+        newCase.save((err, result) => {
+            if (err) throw err;
+            res.send({ 'Message': 'CASE_POST_SUCCESS', '_id': result._id })
+        })
     })
-    // })
 
 }
 
@@ -58,20 +58,20 @@ exports.getOneCase = (req, res) => {
 
 //.Edit one case
 exports.editOneCase = (req, res) => {
-    authController.checkToken(req, res, (req, res) => {
-        const data = {
-            "title": req.body.title,
-            "author": req.body.author,
-            "date": Date.now(),
-            "category": req.body.category,
-            "methodology": req.body.methodology,
-            "caseText": req.body.caseText
-        }
-        Case.findOneAndUpdate(req.body._id, { $set: data }, (err, result) => {
-            if (err) throw err;
-            res.send({ 'Message': 'Case modified' })
-        })
+    // authController.checkToken(req, res, (req, res) => {
+    const data = {
+        "title": req.body.title,
+        "author": req.body.author,
+        "date": Date.now(),
+        "category": req.body.category,
+        "methodology": req.body.methodology,
+        "caseText": req.body.caseText
+    }
+    Case.findOneAndUpdate(req.body._id, { $set: data }, (err, result) => {
+        if (err) throw err;
+        res.send({ 'Message': 'Case modified' })
     })
+    // })
 }
 
 //.Delete a case
@@ -132,20 +132,17 @@ exports.getOneUser = (req, res) => {
 
 //.Edit one user
 exports.editOneUser = (req, res) => {
-    authController.checkToken(req, res, (req, res) => {
-        const data = {
-            "firstName": req.body.firstName,
-            "lastName": req.body.lastName,
-            "password": req.body.password,
-            "email": req.body.email,
-            "location": req.body.location,
-            "modificationDate": Date.now()
-        }
-        User.findOneAndUpdate(req.body._id, { $set: data }, (err, result) => {
-            if (err) throw err;
-            res.send({ 'Message': 'User modified' })
-        })
+    // authController.checkToken(req, res, (req, res) => {
+    const data = {
+        "firstName": req.body.firstName,
+        "lastName": req.body.lastName,
+        "location": req.body.location,
+    }
+    User.findByIdAndUpdate(req.body._id, { $set: data }, (err, result) => {
+        if (err) throw err;
+        res.send({ 'Message': 'User modified' })
     })
+    // })
 }
 
 //.Delete one user

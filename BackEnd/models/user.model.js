@@ -23,9 +23,9 @@ const userSchema = new mongoose.Schema({
         require: true,
         type: types.String
     },
-    "age": {
+    "location": {
         require: true,
-        type: types.Number
+        type: types.String
     },
     "registerDate": {
         require: true,

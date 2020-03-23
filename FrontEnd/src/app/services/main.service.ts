@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { User } from '../models/User';
+import { UserMod } from '../models/UserMod';
 import { Case } from '../models/Case';
 
 
@@ -31,14 +32,13 @@ export class MainService {
     return this._http.post(`${this.url}/login`, user);
   }
 
-  updateProfile(user: User) {
-    return this._http.put(`${this.url}/editOneUser`, user);
+  updateProfile(userMod: UserMod) {
+    return this._http.put(`${this.url}/editOneUser`, userMod)
   }
 
   getOneUser(id: any) {
     return this._http.get(`${this.url}/getOneUser/${id}`)
   }
-
 
 
   //CRUD Cases.

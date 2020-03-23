@@ -17,11 +17,9 @@ export class ProfileComponent implements OnInit {
     this.profileForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
       location: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', Validators.required],
-    }, { validator: this._userService.matchValidator('password', 'confirmPassword') });
+      _id: [localStorage.getItem('id'), Validators.required]
+    });
 
     //Coge el ID para pintar el DOM.
     let id = localStorage.getItem('id');
@@ -29,6 +27,9 @@ export class ProfileComponent implements OnInit {
       .subscribe((response) => {
         console.log(response);
         this.email = response['email'];
+        this.firstName = response['firstName'];
+        this.lastName = response['lastName'];
+        this.location = response['location'];
       });
   }
 
@@ -36,6 +37,9 @@ export class ProfileComponent implements OnInit {
   submitted = false;
   loading = false;
   email: string;
+  firstName: string;
+  lastName: string;
+  location: string;
 
 
   get f() { return this.profileForm.controls; }
@@ -53,7 +57,7 @@ export class ProfileComponent implements OnInit {
             timer: 1500
           })
 
-          this._router.navigateByUrl("/allcases")
+          this._router.navigateByUrl("/allCases")
 
         }
         console.log(response);
