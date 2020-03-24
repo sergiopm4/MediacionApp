@@ -54,7 +54,7 @@
                             aria-label="Search by term.." aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button id="btn-search" class="btn btn-warning btn-md button"
-                                (click)="filterCategory(inputSearch.value)">Buscar</button>
+                                (click)="filterByWord(inputSearch.value)">Buscar</button>
                         </div>
                     </div>
                 </div>
@@ -75,13 +75,14 @@
 
         <!-- Las cards con las noticias -->
         <div class="row">
-            <div class="col-md-4 my-3" *ngFor="let case of _mainService.dataCasesApi;let i = index">
+            <div class="col-md-4 my-3" *ngFor="let case of _mainService.dataCasesFilteredApi;let i = index">
                 <div class="card" style="width: 18rem;">
                     <!-- <img src="" class="card-img-top" alt="" height="175" width="175"> -->
                     <div class="card-body">
                         <h5 class="card-title"><strong>{{case.title}}</strong></h5>
                         <p>Método: <em>{{case.methodology}}</em></p>
-                        <p class="lead" id="case-description">{{case.description}}</p>
+                        <p>Autor: <em>{{case.author}}</em></p>
+                        <p class="lead" id="case-description">"{{case.description}}"</p>
                         <a routerLink="/case/{{i}}" target="_blank" id="btn-go-case" class="btn btn-warning button">Ir
                             al caso</a>
                     </div>

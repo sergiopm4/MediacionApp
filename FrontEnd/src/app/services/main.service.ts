@@ -14,6 +14,7 @@ export class MainService {
   constructor(public _http: HttpClient) {
     _http.get(`${this.url}/getAllCases`).subscribe((response) => {
       this.dataCasesApi = response;
+      this.dataCasesFilteredApi = response;
       console.log(this.dataCasesApi)
     })
   }

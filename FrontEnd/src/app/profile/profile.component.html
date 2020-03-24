@@ -2,7 +2,7 @@
     <div class="container bootstrap snippet">
         <div class="row">
             <div class="col-sm-10">
-                <h1>User name</h1>
+                <h1>{{firstName}}</h1>
             </div>
         </div>
         <div class="row">
@@ -10,13 +10,15 @@
                 <!--left col-->
                 <div class="text-center my-2">
                     <h5>Mediador</h5>
-                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
+                    <img src="uploads\e5e7330bd959990c9363e37e9ebfe560" class="avatar img-circle img-thumbnail"
                         alt="avatar">
+                    <!-- <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
+                        alt="avatar"> -->
                     <h6>Sube una foto diferente...</h6>
                     <!-- <input type="file" class="text-center center-block file-upload"> -->
-                    <form action="/upload" method="POST" class="form-group" enctype="multipart/form-data">
-                        <input type="file" name="myFile">
-                        <button type="submit">Enviar</button>
+                    <form>
+                        <input type="file" name="profileImage" multiple (change)="selectImage($event)">
+                        <button type="submit" (click)="uploadImage()">Enviar</button>
                     </form>
                 </div>
 
@@ -52,12 +54,12 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="home">
                         <hr>
-                        <form [formGroup]="profileForm" (ngSubmit)="updateProfile()" class="form" id="registrationForm">
+                        <form [formGroup]="profileForm" (ngSubmit)="updateProfile()" class="form">
 
                             <div class="form-group" *ngIf="false">
                                 <div class="col-xs-6">
                                     <label for="first_name">
-                                        <h4>ID</h4>
+                                        <h4>userID</h4>
                                     </label>
                                     <input type="text" class="form-control" formControlName="_id" placeholder="id">
                                 </div>
@@ -68,7 +70,11 @@
                                         <h4>Nombre</h4>
                                     </label>
                                     <input type="text" class="form-control" value="{{firstName}}"
-                                        formControlName="firstName" placeholder="nombre">
+                                        formControlName="firstName" placeholder="nombre"
+                                        [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.firstName.errors.required">Por favor, ingresa tu nombre</div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -78,7 +84,11 @@
                                         <h4>Apellidos</h4>
                                     </label>
                                     <input type="text" class="form-control" value="{{lastName}}"
-                                        formControlName="lastName" placeholder="apellidos">
+                                        formControlName="lastName" placeholder="apellidos"
+                                        [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.lastName.errors.required">Por favor, ingresa tus apellidos</div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -89,6 +99,7 @@
                                     </label>
                                     <input type="email" readonly value="{{email}}" class="form-control"
                                         placeholder="email@email.com">
+
                                 </div>
                             </div>
 
@@ -98,7 +109,11 @@
                                         <h4>Localidad</h4>
                                     </label>
                                     <input type="text" class="form-control" value="{{location}}" placeholder="localidad"
-                                        formControlName="location" title="enter a location">
+                                        formControlName="location"
+                                        [ngClass]="{ 'is-invalid': submitted && f.location.errors }">
+                                    <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+                                        <div *ngIf="f.location.errors.required">Por favor, ingresa una localidad</div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -122,7 +137,7 @@
                                 </div>
                             </div> -->
                             <div class="form-group">
-                                <button [disabled]="loading" id="btn-save"
+                                <button [disabled]="loading && !profileForm.valid" id="btn-save"
                                     class="btn btn-success btn-lg font-weight-bold">Guardar los
                                     cambios</button>
                                 <img *ngIf="loading"

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MainService } from '../services/main.service';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 
 
@@ -13,17 +14,10 @@ import Swal from 'sweetalert2';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(public _mainService: MainService, public _userService: UserService, public formBuilder: FormBuilder, public _router: Router) {
-    this.profileForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      location: ['', Validators.required],
-      _id: [localStorage.getItem('id'), Validators.required]
-    });
-
+  constructor(public _http: HttpClient, public _mainService: MainService, public _userService: UserService, public formBuilder: FormBuilder, public _router: Router) {
     //Coge el ID para pintar el DOM.
-    let id = localStorage.getItem('id');
-    this._mainService.getOneUser(id)
+    let userID = localStorage.getItem('id');
+    this._mainService.getOneUser(userID)
       .subscribe((response) => {
         console.log(response);
         this.email = response['email'];
@@ -31,9 +25,22 @@ export class ProfileComponent implements OnInit {
         this.lastName = response['lastName'];
         this.location = response['location'];
       });
+
+
+    this.profileForm = this.formBuilder.group({
+
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      location: ['', Validators.required],
+      _id: [userID, Validators.required],
+
+    });
+
+
   }
 
   profileForm: FormGroup;
+  images: any;
   submitted = false;
   loading = false;
   email: string;
@@ -45,25 +52,55 @@ export class ProfileComponent implements OnInit {
   get f() { return this.profileForm.controls; }
 
   updateProfile() {
-    this._mainService.updateProfile(this.profileForm.value)
-      .subscribe((response) => {
-        if (response['Message'] === 'User modified') {
+    this.submitted = true;
 
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Datos guardados!',
-            showConfirmButton: false,
-            timer: 1500
-          })
+    if (this.profileForm.invalid) {
+      return;
 
-          this._router.navigateByUrl("/allCases")
+    } else {
+      this.loading = true;
 
-        }
-        console.log(response);
-        this.loading = true;
+      this._mainService.updateProfile(this.profileForm.value)
+        .subscribe((response) => {
+          if (response['Message'] === 'User modified') {
 
-      })
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Datos guardados!',
+              showConfirmButton: false,
+              timer: 1500
+            })
+
+            this._router.navigateByUrl("/allCases")
+
+          }
+          console.log(response);
+          this.loading = true;
+
+        })
+    }
+
+  }
+
+  //Upload Image.
+  selectImage(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.images = file;
+    }
+  }
+
+  uploadImage() {
+    const formData = new FormData();
+    formData.append('file', this.images);
+
+    this._http.post<any>('http://localhost:3000/file', formData)
+      .subscribe(
+        (res) => console.log(res),
+        (err) => console.log(err)
+      );
+
   }
 
 

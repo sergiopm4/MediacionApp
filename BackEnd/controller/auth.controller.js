@@ -73,7 +73,7 @@ exports.login = (req, res) => {
                             path: '/',
                         });
 
-                        res.send({ 'Message': 'Welcome', 'token': token, 'id': users[0]['id'] })
+                        res.send({ 'Message': 'Welcome', 'token': token, 'id': users[0]['id'], 'firstName': users[0]['firstName'], 'lastName': users[0]['lastName'] })
                     })
                 } else {
 

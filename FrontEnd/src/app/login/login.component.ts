@@ -58,6 +58,8 @@ export class LoginComponent {
             document["cookie"] = `sello=${response["token"]}`;
             localStorage.setItem('token', response["token"]);
             localStorage.setItem('id', response["id"]);
+            localStorage.setItem('firstName', response['firstName']);
+            localStorage.setItem('lastName', response['lastName']);
             console.log(response)
 
             Swal.fire({

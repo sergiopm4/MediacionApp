@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const { check, validationResult } = require('express-validator');
 const helmet = require('helmet');
 const cors = require('cors');
+const multer = require('multer');
 
 const dbController = require('./controller/db.controller');
 const authController = require('./controller/auth.controller');
@@ -31,6 +32,36 @@ server.post('/register', [check('email', 'The email is not valid').not().isEmpty
 server.post('/login', authController.login);
 
 
+
+
+
+// Upload IMG.
+const storageConfig = multer.diskStorage({ destination: './uploads/' });
+const fileFilter = (req, file, callBack) => {
+    if (file.mimetype === 'image/jpg' || file.mimetype === 'image/png') {
+        //null no arroja error pero no sube el archivo.
+        callBack(null, true);
+    } else {
+        callBack(null, false);
+    }
+}
+
+const upload = multer({ storage: storageConfig, limits: { fileSize: 1024 * 1024 * 5 }, fileFilter: fileFilter })
+
+
+server.post('/file', upload.single('file'), (req, res) => {
+    const file = req.file;
+    console.log(file.filename);
+    if (!file) {
+        res.send({ 'error': 'error' });
+    }
+    res.send(file)
+})
+
+
+
+
+
 //.Endpoints Cases
 server.post('/postCase', dbController.postOneCase);
 
@@ -55,6 +86,9 @@ server.delete('/deleteOneUser/:id', dbController.deleteOneUser);
 
 
 
+
 server.listen(3000, () => {
-    console.log('Server listening on port 3000')
+    console.log('Server listening on port 3000');
 })
+
+

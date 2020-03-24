@@ -7,6 +7,10 @@ const caseSchema = new mongoose.Schema({
         require: true,
         type: types.ObjectId
     },
+    "userID": {
+        require: true,
+        type: types.String
+    },
     "title": {
         require: true,
         type: types.String

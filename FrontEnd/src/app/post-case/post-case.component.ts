@@ -12,8 +12,27 @@ import Swal from 'sweetalert2';
 })
 export class PostCaseComponent {
 
+  postCaseForm: FormGroup;
+  submitted = false;
+  loading = false;
+  firstName: string;
+  lastName: string;
+  userID: string;
+
   constructor(public _mainService: MainService, public _userService: UserService, public formBuilder: FormBuilder, public _router: Router) {
+    let userID = localStorage.getItem('id');
+    this._mainService.getOneUser(userID)
+      .subscribe((response) => {
+        console.log(response);
+        this.firstName = response['firstName'];
+        this.lastName = response['lastName'];
+        this.userID = response['_id'];
+
+      });
+
     this.postCaseForm = this.formBuilder.group({
+      userID: [userID, Validators.required],
+      author: [`${localStorage.getItem('firstName')} ${localStorage.getItem('lastName')}`, Validators.required],
       title: ['', Validators.required],
       methodology: ['', Validators.required],
       category: ['', Validators.required],
@@ -22,9 +41,7 @@ export class PostCaseComponent {
     });
   }
 
-  postCaseForm: FormGroup;
-  submitted = false;
-  loading = false;
+
 
   get f() { return this.postCaseForm.controls; }
 

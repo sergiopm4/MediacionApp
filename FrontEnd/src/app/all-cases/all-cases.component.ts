@@ -31,7 +31,6 @@ export class AllCasesComponent implements OnInit {
       }
     }
 
-    this._mainService.dataCasesApi = this._mainService.dataCasesFilteredApi;
 
   }
 
@@ -40,12 +39,11 @@ export class AllCasesComponent implements OnInit {
     this._mainService.dataCasesFilteredApi = []; //esto es para vaciar la busqueda cada vez que buscas.
 
     for (let obj of this._mainService.dataCasesApi) {
-      let categoryData = obj["category"].toLowerCase();
+      let categoryData = obj["author"].toLowerCase();
       if (categoryData.indexOf(word) >= 0) {
         this._mainService.dataCasesFilteredApi.push(obj);
       }
     }
-    this._mainService.dataCasesApi = this._mainService.dataCasesFilteredApi;
 
     return this._mainService.dataCasesFilteredApi;
   }

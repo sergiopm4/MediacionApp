@@ -41,6 +41,7 @@ export class RegisterComponent {
       this._mainService.register(this.registerForm.value)
         .subscribe((response) => {
           if (response['Message'] === 'USER SAVED') {
+            this._userService.isLogged = true;
             Swal.fire({
               position: 'center',
               icon: 'success',

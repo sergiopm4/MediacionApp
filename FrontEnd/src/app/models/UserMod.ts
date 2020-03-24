@@ -3,4 +3,5 @@ export class UserMod {
     lastName: string;
     location: string;
     id: any;
+    img: any;
 }
