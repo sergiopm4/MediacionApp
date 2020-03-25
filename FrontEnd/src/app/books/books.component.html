@@ -1,0 +1,39 @@
+<section id="section-all">
+    <div class="container">
+        <div class="row">
+            <h1 id="title">Bibliografía Recomendada</h1>
+        </div>
+        <div class="row mt-5">
+            <!-- table -->
+            <table class="table table-hover table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Título</th>
+                        <th scope="col">Autor</th>
+                        <th scope="col">Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-secondary" *ngFor="let book of _mainService.dataBooksApi">
+                        <td>{{book.title}}</td>
+                        <td>{{book.author}}</td>
+                        <td><a href="{{book.link}}" target="_blank">Comprar</a></td>
+                    </tr>
+                    <!-- <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</section>

@@ -7,6 +7,8 @@ import { CaseComponent } from './case/case.component';
 import { AllCasesComponent } from './all-cases/all-cases.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PostCaseComponent } from './post-case/post-case.component';
+import { BooksComponent } from './books/books.component';
+
 
 
 const routes: Routes = [
@@ -18,6 +20,7 @@ const routes: Routes = [
   { path: 'case/:id', component: CaseComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'postCase', component: PostCaseComponent },
+  { path: 'books', component: BooksComponent },
   { path: '**', component: HomeComponent }
 
 ];

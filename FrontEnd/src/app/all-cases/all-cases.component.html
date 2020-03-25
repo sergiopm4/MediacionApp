@@ -7,6 +7,8 @@
                 <!-- Country selection -->
                 <div class="col-3 pt-1">
                     <a class="btn btn-outline-primary btn-md button" id="btn-home" routerLink="/home">Ir a Inicio</a>
+                    <a class="ml-3" id="link-books" routerLink="/books">Bibliografía</a>
+
                 </div>
                 <div class="col-6 text-center">
                     <h1 id="head-title">
@@ -62,19 +64,19 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <button class="btn btn-warning btn-md button" routerLink="/postCase">+ Nuevo caso</button>
                 </div>
-                <div class="col-md-6">
-
+                <div class="col-md-4">
                 </div>
-
+                <div class="col-md-4">
+                </div>
             </div>
         </div>
 
 
         <!-- Las cards con las noticias -->
-        <div class="row">
+        <div class="row mt-3">
             <div class="col-md-4 my-3" *ngFor="let case of _mainService.dataCasesFilteredApi;let i = index">
                 <div class="card" style="width: 18rem;">
                     <!-- <img src="" class="card-img-top" alt="" height="175" width="175"> -->

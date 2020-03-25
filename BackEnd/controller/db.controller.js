@@ -1,5 +1,6 @@
 const Case = require('../models/case.model');
 const User = require('../models/user.model');
+const Book = require('../models/book.model');
 const authController = require('./auth.controller');
 
 const mongoose = require('mongoose');
@@ -157,5 +158,68 @@ exports.deleteOneUser = (req, res) => {
     })
 }
 
-// GetOne && getAll -- Mssages Home-- **********************************************************************
 
+// CRUD - Books **********************************************************************
+exports.createBook = (req, res) => {
+    // authController.checkToken(req, res, (req, res) => {
+    const data = {
+        "_id": mongoose.Types.ObjectId(),
+        "title": req.body.title,
+        "author": req.body.author,
+        "link": req.body.link,
+        "registerDate": Date.now()
+    }
+
+    const newBook = new Book(data);
+    newBook.save((err, result) => {
+        if (err) throw err;
+        res.send({ 'Message': 'BOOK_SAVED' })
+    })
+    // })
+}
+
+exports.getAllBooks = (req, res) => {
+    // authController.checkToken(req, res, (req, res) => {
+    Book.find((err, books) => {
+        if (err) throw err;
+        res.send(books);
+    })
+    // })
+}
+
+
+
+exports.getOneBook = (req, res) => {
+    // authController.checkToken(req, res, (req, res) => {
+    const id = req.params.id;
+    Book.findById(id, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    })
+    // })
+}
+
+
+exports.editOneBook = (req, res) => {
+    // authController.checkToken(req, res, (req, res) => {
+    const data = {
+        "title": req.body.title,
+        "author": req.body.author,
+        "link": req.body.link,
+    }
+    Book.findByIdAndUpdate(req.body._id, { $set: data }, (err, result) => {
+        if (err) throw err;
+        res.send({ 'Message': 'BOOK_MODIFIED' })
+    })
+    // })
+}
+
+exports.deleteOneBook = (req, res) => {
+    authController.checkToken(req, res, (req, res) => {
+        const id = req.params.id;
+        Book.findByIdAndDelete(id, (err, result) => {
+            if (err) throw err;
+            res.send({ 'Message': 'BOOK_REMOVED' })
+        })
+    })
+}

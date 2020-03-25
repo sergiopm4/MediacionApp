@@ -17,10 +17,15 @@ export class MainService {
       this.dataCasesFilteredApi = response;
       console.log(this.dataCasesApi)
     })
+
+    _http.get(`${this.url}/getAllBooks`).subscribe((response) => {
+      this.dataBooksApi = response;
+    })
   }
 
   url: string = 'http://localhost:3000';
   dataCasesApi: any;
+  dataBooksApi: any;
   dataCasesFilteredApi: any;
 
 

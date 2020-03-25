@@ -17,6 +17,7 @@ export class AllCasesComponent implements OnInit {
 
   closeSession() {
     this._userService.isLogged = false;
+    localStorage.removeItem('id');
     this._router.navigateByUrl('/home');
   }
   refresh() {

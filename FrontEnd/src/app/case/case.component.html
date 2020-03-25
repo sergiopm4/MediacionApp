@@ -13,9 +13,11 @@
                     <br>
                     <p>{{_mainService.dataCasesApi[index].caseText}}</p>
 
-                    <p class="lead"><strong><a href="" target="_blank" rel="noopener noreferrer">Responder al
-                                autor</a></strong></p>
+
                     <p class="lead">Autor: {{_mainService.dataCasesApi[index].author}}</p>
+                    <button type="button" id="btn-send" class="btn btn-primary btn-lg" data-toggle="modal"
+                        data-target="#msgModal">Enviar
+                        mensaje</button>
                     <!-- <button class="btn btn-warning btn-lg" onclik="self.close()" type="button">Cerrar</button> -->
                 </div>
             </div>
@@ -23,3 +25,30 @@
         </div>
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Responder a: {{_mainService.dataCasesApi[index].author}}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" class="form-group">
+                    <input type="text" name="" class="form-control" placeholder="Asunto" id="">
+                    <textarea name="" class="form-control mt-3" placeholder="Escribe algo..." id="" cols="30"
+                        rows="10"></textarea>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-success" onclick="$('#msgModal').modal('hide')">Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>

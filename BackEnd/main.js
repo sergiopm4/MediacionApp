@@ -18,7 +18,6 @@ server.use(cors());
 server.use(cookieParser()); //.Para poder leer el 'sello'
 
 //.Endpoints --> /register && /login
-// server.post('/register', [check('firstName').not().isEmpty().trim().escape(), check('lastName').not().isEmpty().trim().escape(), check('email', 'The email is not valid').not().isEmpty().isEmail().normalizeEmail(), check('password', 'Password must have at least 8 characters').not().isEmpty().isLength({ min: 8 })], (req, res) => {
 server.post('/register', [check('email', 'The email is not valid').not().isEmpty().isEmail().normalizeEmail(), check('password', 'Password must have at least 8 characters').not().isEmpty().isLength({ min: 8 })], (req, res) => {
 
     const errors = validationResult(req);
@@ -83,6 +82,17 @@ server.get('/getOneUser/:id', dbController.getOneUser);
 server.put('/editOneUser', dbController.editOneUser);
 
 server.delete('/deleteOneUser/:id', dbController.deleteOneUser);
+
+//.Endpoints Bibliography
+server.post('/createBook', dbController.createBook);
+
+server.get('/getAllBooks', dbController.getAllBooks);
+
+server.get('/getOneBook/:id', dbController.getOneBook);
+
+server.put('/editOneBook', dbController.editOneBook);
+
+server.delete('/deleteOneBook', dbController.deleteOneBook);
 
 
 

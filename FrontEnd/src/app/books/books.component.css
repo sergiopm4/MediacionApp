@@ -3,6 +3,11 @@
     background-color: rgba(8, 76, 139, 0.205);
     padding-top: 20px;
 }
+#title{
+    font-weight: bold;
+    font-size: 35px;
+    color: rgb(8, 76, 139);
+}
 
 #btn-send:hover{
     border-color: rgb(65, 199, 132);

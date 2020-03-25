@@ -68,7 +68,7 @@ export class PostCaseComponent {
               timer: 1500
             })
 
-            this._router.navigateByUrl("/case")
+            this._router.navigateByUrl("/allCases")
 
           }
         })
