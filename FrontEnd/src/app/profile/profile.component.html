@@ -2,7 +2,7 @@
     <div class="container bootstrap snippet">
         <div class="row">
             <div class="col-sm-10">
-                <h1>{{firstName}}</h1>
+                <h1>{{firstName}} {{lastName}}</h1>
             </div>
         </div>
         <div class="row">
@@ -10,12 +10,9 @@
                 <!--left col-->
                 <div class="text-center my-2">
                     <h5>Mediador</h5>
-                    <img src="uploads\e5e7330bd959990c9363e37e9ebfe560" class="avatar img-circle img-thumbnail"
-                        alt="avatar">
-                    <!-- <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
-                        alt="avatar"> -->
+                    <img src="http://res.cloudinary.com/dzj7gaftg/image/upload/v1585227683/api/1585227682656.jpg"
+                        class="avatar img-circle img-thumbnail" alt="avatar" height="200" width="200">
                     <h6>Sube una foto diferente...</h6>
-                    <!-- <input type="file" class="text-center center-block file-upload"> -->
                     <form>
                         <input type="file" name="profileImage" multiple (change)="selectImage($event)">
                         <button type="submit" (click)="uploadImage()">Enviar</button>
@@ -24,19 +21,21 @@
 
                 <div class="panel panel-default my-3">
                     <div class="panel-heading">Sitio Web <i class="fa fa-link fa-1x"></i></div>
-                    <div class="panel-body"><a href="http://bootnipets.com">www.josemediador.com</a></div>
+                    <div class="panel-body"><a href="http://www.google.com">www.josemediador.com</a></div>
                 </div>
 
                 <ul class="list-group">
-                    <li class="list-group-item text-muted">Actividad MediacionApp <i class="fa fa-dashboard fa-1x"></i>
+                    <li class="list-group-item text-muted">Actividad MediaApp <i class="fa fa-dashboard fa-1x"></i>
                     </li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Casos subidos</strong></span>
-                        125
+                    <li class="list-group-item text-right"><a (click)="mm()" data-toggle="modal"
+                            data-target="#exampleModal"><span class="pull-left links-span"><strong>Casos
+                                    subidos</strong></span></a>
+                        {{numUserCases}}
                     </li>
                     <li class="list-group-item text-right"><span class="pull-left"><strong>Comentarios</strong></span>
-                        13
+                        4
                     </li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 12
                     </li>
                 </ul>
 
@@ -152,3 +151,42 @@
         </div>
     </div>
 </section>
+
+<!-- Modal Section cases, comments and followers-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><strong>Mis casos publicados</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="table-primary">
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Titulo</th>
+                            <th scope="col" colspan="3">Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let case of userCases">
+                            <td>{{case.date}}</td>
+                            <td>{{case.title}}</td>
+                            <td>{{case.description}}</td>
+                            <td><a routerLink="/postCase" data-dismiss="modal"><i class="fa fa-edit"
+                                        style="font-size:24px; color: rgb(173, 173, 6);"></i></a></td>
+                            <td><a><i class="fa fa-trash" style="font-size:24px; color:red;"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

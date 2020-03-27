@@ -52,6 +52,6 @@ h1{
     color: rgb(8, 76, 139);
 }
 
-#case-description{
+.case-description{
     font-size: 16px;
 }

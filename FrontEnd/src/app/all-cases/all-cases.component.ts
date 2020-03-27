@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { MainService } from '../services/main.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-all-cases',
@@ -45,7 +46,15 @@ export class AllCasesComponent implements OnInit {
         this._mainService.dataCasesFilteredApi.push(obj);
       }
     }
-
+    if (this._mainService.dataCasesFilteredApi.length === 0) {
+      Swal.fire({
+        position: 'top',
+        icon: 'error',
+        title: 'No se han encontrado mediadores con ese nombre',
+        showConfirmButton: false,
+        timer: 3000
+      })
+    }
     return this._mainService.dataCasesFilteredApi;
   }
 

@@ -4,21 +4,24 @@
             <div class="col-md-1"></div>
             <div class="col-md-10">
                 <div class="jumbotron">
-                    <h1 class="display-4">{{_mainService.dataCasesApi[index].title}}</h1>
-                    <p>{{_mainService.dataCasesApi[index].description}}</p>
+                    <h1 class="display-4">{{_mainService.dataCasesFilteredApi[index].title}}</h1>
+                    <p>{{_mainService.dataCasesFilteredApi[index].description}}</p>
 
                     <hr class="my-4">
-                    <p>Método: <em>{{_mainService.dataCasesApi[index].methodology}}</em></p>
-                    <p>Categoría: <em>{{_mainService.dataCasesApi[index].category}}</em></p>
+                    <p>Método: <em>{{_mainService.dataCasesFilteredApi[index].methodology}}</em></p>
+                    <p>Categoría: <em>{{_mainService.dataCasesFilteredApi[index].category}}</em></p>
                     <br>
-                    <p>{{_mainService.dataCasesApi[index].caseText}}</p>
+                    <p>{{_mainService.dataCasesFilteredApi[index].caseText}}</p>
 
 
-                    <p class="lead">Autor: {{_mainService.dataCasesApi[index].author}}</p>
-                    <button type="button" id="btn-send" class="btn btn-primary btn-lg" data-toggle="modal"
-                        data-target="#msgModal">Enviar
-                        mensaje</button>
-                    <!-- <button class="btn btn-warning btn-lg" onclik="self.close()" type="button">Cerrar</button> -->
+                    <p class="lead mb-5">Autor: {{_mainService.dataCasesFilteredApi[index].author}}</p>
+                    <a href="" class="mr-5"><i class="fa fa-thumbs-o-up" style="font-size: 32px;"></i> Recomendar</a>
+                    <a href="" class="mr-5"><i class="fa fa-heart-o" style="font-size: 32px;"></i> Follow</a>
+                    <a href="" data-toggle="modal" data-target="#msgModal"><i class="fa fa-envelope-o"
+                            style="font-size: 32px;"></i> Enviar mensaje</a>
+
+
+
                 </div>
             </div>
             <div class="col-md-1"></div>

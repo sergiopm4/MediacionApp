@@ -26,6 +26,18 @@ export class ProfileComponent implements OnInit {
         this.location = response['location'];
       });
 
+    this._http.get(`${this.url}/getAllCases`)
+      .subscribe((response) => {
+        this.userCases = [];
+        this.allCases = response
+        for (let i = 0; i < this.allCases.length; i++) {
+          if (this.allCases[i]['userID'] === userID) {
+            this.userCases.push(this.allCases[i])
+          }
+        }
+        this.numUserCases = this.userCases.length;
+      })
+
 
     this.profileForm = this.formBuilder.group({
 
@@ -47,6 +59,18 @@ export class ProfileComponent implements OnInit {
   firstName: string;
   lastName: string;
   location: string;
+  url: string = 'http://localhost:3000';
+
+  //section cases, comments and followers
+  allCases: any;
+  userCases: any;
+  numUserCases: number;
+
+
+  mm() {
+    console.log(this.userCases)
+  }
+
 
 
   get f() { return this.profileForm.controls; }
@@ -88,6 +112,7 @@ export class ProfileComponent implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.images = file;
+      console.log(event)
     }
   }
 
@@ -95,13 +120,16 @@ export class ProfileComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', this.images);
 
-    this._http.post<any>('http://localhost:3000/file', formData)
+    this._http.post<any>(`${this.url}/file`, formData)
       .subscribe(
         (res) => console.log(res),
         (err) => console.log(err)
       );
 
   }
+
+
+
 
 
 

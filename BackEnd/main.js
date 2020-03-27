@@ -5,6 +5,11 @@ const { check, validationResult } = require('express-validator');
 const helmet = require('helmet');
 const cors = require('cors');
 const multer = require('multer');
+const cloudinary = require('cloudinary').v2; //imagen
+const fs = require('fs');
+
+let secrets = fs.readFileSync('./config/secrets.json');
+secrets = JSON.parse(secrets);
 
 const dbController = require('./controller/db.controller');
 const authController = require('./controller/auth.controller');
@@ -37,7 +42,7 @@ server.post('/login', authController.login);
 // Upload IMG.
 const storageConfig = multer.diskStorage({ destination: './uploads/' });
 const fileFilter = (req, file, callBack) => {
-    if (file.mimetype === 'image/jpg' || file.mimetype === 'image/png') {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
         //null no arroja error pero no sube el archivo.
         callBack(null, true);
     } else {
@@ -45,16 +50,37 @@ const fileFilter = (req, file, callBack) => {
     }
 }
 
-const upload = multer({ storage: storageConfig, limits: { fileSize: 1024 * 1024 * 5 }, fileFilter: fileFilter })
+const upload = multer({
+    storage: storageConfig,
+    limits: { fileSize: 1024 * 1024 * 5 }, fileFilter: fileFilter
+})
+
 
 
 server.post('/file', upload.single('file'), (req, res) => {
     const file = req.file;
-    console.log(file.filename);
+    // console.log(file.filename);
     if (!file) {
-        res.send({ 'error': 'error' });
+        res.send({ 'error': 'FILE_NOT_FOUND' });
+    } else {
+        //. Subir la imagen a Cloudinary
+        cloudinary.config({
+            cloud_name: secrets['cloudinary_cloud_name'],
+            api_key: secrets['cloudinary_api_key'],
+            api_secret: secrets['cloudinary_api_secret']
+        })
+
+        const filePath = req.file.path;
+        const fileRandomName = Date.now();
+
+        cloudinary.uploader.upload(filePath, { public_id: `api/${fileRandomName}`, tags: 'user_image' }, (error, image) => {
+            if (error) throw error;
+            //. Borra imagen del server carpeta de uploads
+            fs.unlinkSync(filePath);
+            res.send(image);
+        })
+
     }
-    res.send(file)
 })
 
 
