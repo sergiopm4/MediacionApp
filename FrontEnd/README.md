@@ -1,6 +1,6 @@
 
 
-<img src="https://res.cloudinary.com/dzj7gaftg/image/upload/v1585554449/api/1585554449717.jpg" height="150" width="150">
+<img src="https://res.cloudinary.com/dzj7gaftg/image/upload/v1585554449/api/1585554449717.jpg" height="150">
 
 # Project Name
 > MEDIA-APP
