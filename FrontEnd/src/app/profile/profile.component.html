@@ -27,7 +27,7 @@
                 <ul class="list-group">
                     <li class="list-group-item text-muted">Actividad MediaApp <i class="fa fa-dashboard fa-1x"></i>
                     </li>
-                    <li class="list-group-item text-right"><a (click)="mm()" data-toggle="modal"
+                    <li class="list-group-item text-right"><a (click)="getUserCases()" data-toggle="modal"
                             data-target="#exampleModal"><span class="pull-left links-span"><strong>Casos
                                     subidos</strong></span></a>
                         {{numUserCases}}
@@ -173,11 +173,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let case of userCases">
+                        <tr *ngFor="let case of userCases; let i = index;">
                             <td>{{case.date}}</td>
                             <td>{{case.title}}</td>
                             <td>{{case.description}}</td>
-                            <td><a routerLink="/postCase" data-dismiss="modal"><i class="fa fa-edit"
+                            <td><a routerLink="/case/{{i}}" data-dismiss="modal"><i class="fa fa-edit"
                                         style="font-size:24px; color: rgb(173, 173, 6);"></i></a></td>
                             <td><a><i class="fa fa-trash" style="font-size:24px; color:red;"></i></a></td>
                         </tr>

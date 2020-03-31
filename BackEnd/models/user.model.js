@@ -7,6 +7,10 @@ const userSchema = new mongoose.Schema({
         require: true,
         type: types.ObjectId
     },
+    "urlImage": {
+        require: true,
+        type: types.String
+    },
     "firstName": {
         require: true,
         type: types.String

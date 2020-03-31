@@ -67,7 +67,7 @@ export class ProfileComponent implements OnInit {
   numUserCases: number;
 
 
-  mm() {
+  getUserCases() {
     console.log(this.userCases)
   }
 

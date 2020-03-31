@@ -15,10 +15,14 @@
 
 
                     <p class="lead mb-5">Autor: {{_mainService.dataCasesFilteredApi[index].author}}</p>
-                    <a href="" class="mr-5"><i class="fa fa-thumbs-o-up" style="font-size: 32px;"></i> Recomendar</a>
-                    <a href="" class="mr-5"><i class="fa fa-heart-o" style="font-size: 32px;"></i> Follow</a>
-                    <a href="" data-toggle="modal" data-target="#msgModal"><i class="fa fa-envelope-o"
-                            style="font-size: 32px;"></i> Enviar mensaje</a>
+                    <a class="mr-5 a-icons" (click)="likeTrue(likeIcon)"><i class="fa fa-thumbs-o-up"
+                            style="font-size: 32px;color: blue;" id="likes-icon"></i>
+                        Recomendar</a>
+                    <a class="mr-5 a-icons" (click)="followTrue(followIcon)"><i class="fa fa-heart-o" id="follow-icon"
+                            style="font-size: 32px;color: blue;"></i>
+                        Follow</a>
+                    <a class="a-icons" data-toggle="modal" data-target="#msgModal"><i class="fa fa-envelope-o"
+                            style="font-size: 32px;color: blue;"></i> Enviar mensaje</a>
 
 
 

@@ -7,6 +7,7 @@ const cors = require('cors');
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2; //imagen
 const fs = require('fs');
+const User = require('./models/user.model');
 
 let secrets = fs.readFileSync('./config/secrets.json');
 secrets = JSON.parse(secrets);
@@ -78,6 +79,17 @@ server.post('/file', upload.single('file'), (req, res) => {
             //. Borra imagen del server carpeta de uploads
             fs.unlinkSync(filePath);
             res.send(image);
+
+            // const id = localStorage.getItem('id');
+            // const urlImage = image.url;
+
+            // const data = {
+            //     "urlImage": urlImage,
+            // }
+            // User.findByIdAndUpdate(id, { $set: data }, (err, result) => {
+            //     if (err) throw err;
+            //     res.send({ 'Message': 'USER_IMG_MODIFIED' })
+            // })
         })
 
     }

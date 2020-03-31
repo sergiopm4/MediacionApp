@@ -40,3 +40,9 @@
     background-color: rgb(8, 76, 139);
     color: white    ;
 }
+#line-hr{
+    background-color: rgb(8, 76, 139);
+    width: 500px;
+    height: 2px;
+    border-radius: 10%;
+}
